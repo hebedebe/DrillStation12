@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Scan" load_steps=2 format=3 uid="uid://brp38x5eveicx"]
+
+[ext_resource type="Script" uid="uid://dksxhfv51fodn" path="res://Systems/Scan/Scripts/scan.gd" id="2_unuj6"]
+
+[resource]
+script = ExtResource("2_unuj6")
+title = "N/A"
+description = "Nothing of interest detected at this location."
+metadata/_custom_type_script = "uid://dksxhfv51fodn"

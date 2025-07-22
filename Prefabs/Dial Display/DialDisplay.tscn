@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://b86ov60y182p7"]
+
+[ext_resource type="FontFile" uid="uid://bjuo2qd2s2kbv" path="res://Shared Resources/Fonts/times.ttf" id="1_1tj0k"]
+[ext_resource type="Script" uid="uid://6yp8bi87us8i" path="res://Prefabs/Dial Display/Scripts/dial_display.gd" id="1_8dibm"]
+[ext_resource type="Material" uid="uid://cj8um0hpkv5i5" path="res://Shared Resources/Materials/rusty_metal.tres" id="3_mopwb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1tj0k"]
+albedo_color = Color(0, 0.234707, 2.16588e-07, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_x21gl"]
+size = Vector2(0.066, 0.03)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yux0f"]
+size = Vector3(0.074, 0.037, 0.005)
+
+[node name="DialDisplay" type="Node3D" groups=["needs_power"]]
+script = ExtResource("1_8dibm")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Screen" type="MeshInstance3D" parent="Model"]
+material_override = SubResource("StandardMaterial3D_1tj0k")
+mesh = SubResource("QuadMesh_x21gl")
+
+[node name="Label" type="Label3D" parent="Model/Screen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.002)
+pixel_size = 0.0003
+modulate = Color(0, 1, 0, 1)
+text = "12"
+font = ExtResource("1_1tj0k")
+font_size = 77
+outline_size = 0
+
+[node name="Screen2" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.003)
+material_override = ExtResource("3_mopwb")
+mesh = SubResource("BoxMesh_yux0f")

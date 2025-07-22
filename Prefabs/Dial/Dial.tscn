@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://cwn33igqtokph"]
+
+[ext_resource type="Script" uid="uid://chlvgox04t6rs" path="res://Prefabs/Dial/Scripts/dial.gd" id="1_xyitf"]
+[ext_resource type="Material" uid="uid://chom0ctekue0b" path="res://Shared Resources/Materials/hazard.tres" id="2_wvcwn"]
+[ext_resource type="FontFile" uid="uid://bjuo2qd2s2kbv" path="res://Shared Resources/Fonts/times.ttf" id="3_6be24"]
+[ext_resource type="Material" uid="uid://cj8um0hpkv5i5" path="res://Shared Resources/Materials/rusty_metal.tres" id="4_tgivm"]
+[ext_resource type="Script" uid="uid://ba3jm07kuk0k7" path="res://Systems/Interact/Interactable/Scripts/interactable.gd" id="5_fcgij"]
+[ext_resource type="AudioStream" uid="uid://dat5dis6sfnuj" path="res://Prefabs/Dial/Audio/tick_2.mp3" id="6_qf2rk"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_60l6d"]
+top_radius = 0.032
+bottom_radius = 0.032
+height = 0.007
+radial_segments = 12
+rings = 0
+cap_bottom = false
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rf201"]
+lightmap_size_hint = Vector2i(17, 9)
+top_radius = 0.026
+bottom_radius = 0.032
+height = 0.007
+radial_segments = 12
+rings = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_7wj72"]
+size = Vector3(0.064, 0.064, 0.064)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xyitf"]
+height = 0.0176392
+radius = 0.0385742
+
+[node name="Dial" type="Node3D"]
+script = ExtResource("1_xyitf")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Base" type="MeshInstance3D" parent="Model"]
+material_override = ExtResource("2_wvcwn")
+mesh = SubResource("CylinderMesh_60l6d")
+
+[node name="Detail" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.002, 0)
+material_override = ExtResource("4_tgivm")
+mesh = SubResource("CylinderMesh_rf201")
+
+[node name="Pointer" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(0.20889, 0, -0.20889, 0, 0.101077, 0, 0.20889, 0, 0.20889, 0, 0, -0.028)
+material_override = ExtResource("4_tgivm")
+mesh = SubResource("BoxMesh_7wj72")
+
+[node name="DRILL" type="Label3D" parent="Model"]
+transform = Transform3D(1.32397e-07, -2.70869, -1.09742e-07, -2.40695e-08, -1.18401e-07, 2.51061, -1.51444, -2.36801e-07, -3.99017e-08, 0, 0.00612052, 0)
+pixel_size = 0.0003
+shaded = true
+texture_filter = 0
+modulate = Color(1, 1, 0, 1)
+text = "FREQ"
+font = ExtResource("3_6be24")
+outline_size = 2
+
+[node name="Interactable" type="StaticBody3D" parent="."]
+script = ExtResource("5_fcgij")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0015564, 0)
+shape = SubResource("CylinderShape3D_xyitf")
+
+[node name="ClickSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_qf2rk")
+volume_db = -5.82
+max_polyphony = 5
+bus = &"Inside"
+
+[connection signal="on_interacted" from="Interactable" to="." method="_on_interactable_on_interacted"]
+[connection signal="on_stop_interact" from="Interactable" to="." method="_on_interactable_on_stop_interact"]

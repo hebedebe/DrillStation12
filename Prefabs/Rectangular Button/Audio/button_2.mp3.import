@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ddjqjyqwojddg"
+path="res://.godot/imported/button_2.mp3-1cf59bec79b1a44f5449f7919f952f1b.mp3str"
+
+[deps]
+
+source_file="res://Prefabs/Rectangular Button/Audio/button_2.mp3"
+dest_files=["res://.godot/imported/button_2.mp3-1cf59bec79b1a44f5449f7919f952f1b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

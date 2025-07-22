@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Scan" load_steps=3 format=3 uid="uid://lsrsdvufby58"]
+
+[ext_resource type="Texture2D" uid="uid://clbykcp1527b1" path="res://Missions/textures/fish_skeleton.png" id="1_x3bfq"]
+[ext_resource type="Script" uid="uid://dksxhfv51fodn" path="res://Systems/Scan/Scripts/scan.gd" id="2_bam60"]
+
+[resource]
+script = ExtResource("2_bam60")
+title = "Fish Skeleton"
+description = "The dessicated corpse of a fish of an unknown species. Carbon dating estimates an age of roughly 12,000 years."
+image = ExtResource("1_x3bfq")
+metadata/_custom_type_script = "uid://dksxhfv51fodn"

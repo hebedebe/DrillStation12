@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Mission" load_steps=3 format=3 uid="uid://cx3gal1h8yibc"]
+
+[ext_resource type="Resource" uid="uid://cduy6xvyped04" path="res://Missions/scans/snake_scan.tres" id="1_l5l33"]
+[ext_resource type="Script" uid="uid://bahlp1rvowort" path="res://Systems/Missions/Mission/Scripts/mission.gd" id="2_bs2pf"]
+
+[resource]
+script = ExtResource("2_bs2pf")
+zone = Vector2i(5, 1)
+depth = 19
+scan_result = ExtResource("1_l5l33")
+metadata/_custom_type_script = "uid://bahlp1rvowort"

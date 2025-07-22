@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://bijg7yhsiw3hw"]
+
+[ext_resource type="Material" uid="uid://lw6ro38s68bc" path="res://Shared Resources/Materials/rusty_metal.tres" id="1_dhv48"]
+[ext_resource type="Script" uid="uid://cd3ldr5pbpaee" path="res://Prefabs/Progress Bar/Scripts/progress_bar.gd" id="1_k56k3"]
+[ext_resource type="FontFile" uid="uid://bjuo2qd2s2kbv" path="res://Shared Resources/Fonts/times.ttf" id="2_6vo3l"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_njpiq"]
+size = Vector3(0.58, 0.11, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhv48"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_6vo3l"]
+size = Vector3(0.56, 0.08, 0.015)
+
+[sub_resource type="Gradient" id="Gradient_k56k3"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e4fpq"]
+gradient = SubResource("Gradient_k56k3")
+width = 16
+
+[node name="ProgressBar" type="Node3D" groups=["needs_power"]]
+script = ExtResource("1_k56k3")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Backing" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(0.393, 0, 0, 0, 0.393, 0, 0, 0, 0.393, 0, 0, 0)
+material_override = ExtResource("1_dhv48")
+mesh = SubResource("BoxMesh_njpiq")
+
+[node name="ScreenBacking" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(0.393, 0, 0, 0, 0.393, 0, 0, 0, 0.393, 0, 0, 0.00145119)
+material_override = SubResource("StandardMaterial3D_dhv48")
+mesh = SubResource("BoxMesh_6vo3l")
+
+[node name="Label" type="Label3D" parent="." groups=["needs_power"]]
+transform = Transform3D(0.100181, 0, 0, 0, 0.100181, 0, 0, 0, 0.100181, 0, 0, 0.00513188)
+modulate = Color(0, 1, 0, 1)
+text = "COMPLETE"
+font = ExtResource("2_6vo3l")
+font_size = 77
+outline_size = 0
+
+[node name="Loadingbar" type="Sprite3D" parent="."]
+transform = Transform3D(0.13, 0, 0, 0, 0.235, 0, 0, 0, 0.56, 0, 0, 0.00450517)
+pixel_size = 0.1
+texture = SubResource("GradientTexture1D_e4fpq")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgdauqlwxaan0"]
+
+[ext_resource type="Script" uid="uid://dp508b21tbwlg" path="res://Systems/Gamestate/Scripts/gamestate.gd" id="1_6x8a3"]
+
+[node name="Gamestate" type="Node3D" groups=["Gamestate"]]
+script = ExtResource("1_6x8a3")

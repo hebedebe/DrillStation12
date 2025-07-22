@@ -1,0 +1,55 @@
+[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://dy1jgrlql6m7l"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_n8wo2"]
+resource_name = "Reverb"
+room_size = 0.46
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_g28q7"]
+resource_name = "Compressor"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
+resource_name = "Reverb"
+room_size = 1.0
+damping = 0.18
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_j3pel"]
+resource_name = "LowPassFilter"
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_j3pel"]
+resource_name = "Compressor"
+
+[resource]
+bus/1/name = &"World"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/2/name = &"Inside"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = -3.54298
+bus/2/send = &"World"
+bus/2/effect/0/effect = SubResource("AudioEffectReverb_n8wo2")
+bus/2/effect/0/enabled = true
+bus/2/effect/1/effect = SubResource("AudioEffectCompressor_g28q7")
+bus/2/effect/1/enabled = true
+bus/3/name = &"Outside"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"World"
+bus/3/effect/0/effect = SubResource("AudioEffectReverb_j3pel")
+bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource("AudioEffectLowPassFilter_j3pel")
+bus/3/effect/1/enabled = true
+bus/3/effect/2/effect = SubResource("AudioEffectCompressor_j3pel")
+bus/3/effect/2/enabled = true
+bus/4/name = &"UI"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = &"Master"

@@ -1,0 +1,265 @@
+[gd_scene load_steps=31 format=3 uid="uid://bne34n2s22p2g"]
+
+[ext_resource type="PackedScene" uid="uid://bgdauqlwxaan0" path="res://Systems/Gamestate/gamestate.tscn" id="1_1t40k"]
+[ext_resource type="PackedScene" uid="uid://c6m241htjqbtq" path="res://Systems/Random Ambience/random_ambience.tscn" id="1_2eydq"]
+[ext_resource type="AudioStream" uid="uid://qgaxbn2h2xdh" path="res://Shared Resources/Audio/cave_ambience.mp3" id="1_4i2jg"]
+[ext_resource type="PackedScene" uid="uid://u5cl2kcjyo5o" path="res://Systems/Player/player.tscn" id="1_cn7tl"]
+[ext_resource type="Script" uid="uid://bsurbhvktv08o" path="res://Systems/Light Flicker/Scripts/light_flicker.gd" id="2_1t40k"]
+[ext_resource type="AudioStream" uid="uid://budsk1mj5oo4n" path="res://Systems/Gamestate/Audio/power_buzz.mp3" id="2_85ksa"]
+[ext_resource type="AudioStream" uid="uid://cpcki2r0doqku" path="res://Systems/Gamestate/Audio/power_out.mp3" id="2_icwx8"]
+[ext_resource type="Script" uid="uid://cofqheypacbhs" path="res://Systems/Gamestate/Scripts/power_manager.gd" id="2_rx7fb"]
+[ext_resource type="PackedScene" uid="uid://di8e7fo3miu7r" path="res://Panels/Window Panel/Models/window_panel.glb" id="3_icwx8"]
+[ext_resource type="AudioStream" uid="uid://75dtwln6b7e2" path="res://Systems/Gamestate/Audio/machine_clanking.mp3" id="4_4hre3"]
+[ext_resource type="PackedScene" uid="uid://cvxla8y6o6wo6" path="res://Prefabs/Lever/lever.tscn" id="4_85ksa"]
+[ext_resource type="FontFile" uid="uid://bjuo2qd2s2kbv" path="res://Shared Resources/Fonts/times.ttf" id="5_4hre3"]
+[ext_resource type="Script" uid="uid://bc4tkjxvgy2v0" path="res://Systems/Gamestate/Scripts/drill_manager.gd" id="6_xmwdf"]
+[ext_resource type="Script" uid="uid://cpu75j7nymj8v" path="res://Systems/Gamestate/Scripts/instruments_manager.gd" id="7_6klxa"]
+[ext_resource type="Material" uid="uid://dj0i1wie670su" path="res://Shared Resources/Materials/rusty_metal_brown.tres" id="9_fl0ye"]
+[ext_resource type="Material" uid="uid://lw6ro38s68bc" path="res://Shared Resources/Materials/rusty_metal.tres" id="10_4hre3"]
+[ext_resource type="CompressedTexture3D" uid="uid://fswfo60c1n06" path="res://Shared Resources/LUTs/teal___orange_2.Sony_F3_-_Short_film_Insect_selects.cube-s32.png" id="10_lkl8j"]
+[ext_resource type="Texture2D" uid="uid://dg7t6t0kygvf3" path="res://Prefabs/Dial/Textures/hazard_stripes.png" id="13_fl0ye"]
+[ext_resource type="PackedScene" uid="uid://ctklbdx6y1gu7" path="res://Prefabs/Indicators/Square Button Indicator/indicator.tscn" id="19_6klxa"]
+[ext_resource type="PackedScene" uid="uid://b86ov60y182p7" path="res://Prefabs/Dial Display/DialDisplay.tscn" id="20_xmwdf"]
+[ext_resource type="PackedScene" uid="uid://cwn33igqtokph" path="res://Prefabs/Dial/Dial.tscn" id="21_4i2jg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dygi0"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_energy_multiplier = 0.0
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+ground_energy_multiplier = 0.0
+
+[sub_resource type="Sky" id="Sky_jr1ro"]
+sky_material = SubResource("ProceduralSkyMaterial_dygi0")
+
+[sub_resource type="Environment" id="Environment_dygi0"]
+background_mode = 5
+sky = SubResource("Sky_jr1ro")
+ambient_light_source = 2
+tonemap_mode = 3
+ssao_enabled = true
+sdfgi_use_occlusion = true
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.2279
+adjustment_brightness = 1.49
+adjustment_contrast = 0.9
+adjustment_saturation = 1.29
+adjustment_color_correction = ExtResource("10_lkl8j")
+
+[sub_resource type="BoxMesh" id="BoxMesh_hlu4w"]
+size = Vector3(0.27, 0.52, 0.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kr4le"]
+albedo_texture = ExtResource("13_fl0ye")
+uv1_scale = Vector3(4.395, 1, 1)
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_6klxa"]
+size = Vector2(1, 0.563)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85ksa"]
+albedo_color = Color(0.5, 1, 0.5, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_6bv3h"]
+size = Vector2(1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7hykl"]
+albedo_color = Color(1, 0.5, 0.5, 1)
+
+[node name="Game" type="Node3D"]
+
+[node name="Gamestate" parent="." instance=ExtResource("1_1t40k")]
+
+[node name="PowerManager" type="Node" parent="Gamestate" groups=["PowerManager"]]
+script = ExtResource("2_rx7fb")
+
+[node name="PowerUp" type="AudioStreamPlayer" parent="Gamestate/PowerManager"]
+bus = &"Inside"
+
+[node name="PowerOff" type="AudioStreamPlayer" parent="Gamestate/PowerManager"]
+stream = ExtResource("2_icwx8")
+volume_db = -5.229
+pitch_scale = 0.8
+bus = &"Inside"
+
+[node name="PowerAmbient" type="AudioStreamPlayer" parent="Gamestate/PowerManager"]
+stream = ExtResource("2_85ksa")
+pitch_scale = 0.93
+bus = &"Inside"
+
+[node name="DrillManager" type="Node" parent="Gamestate" groups=["DrillManager"]]
+script = ExtResource("6_xmwdf")
+
+[node name="DrillSound" type="AudioStreamPlayer3D" parent="Gamestate/DrillManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.64162, 0, -4.87487)
+stream = ExtResource("4_4hre3")
+volume_db = -20.347
+bus = &"Outside"
+
+[node name="InstrumentsManager" type="Node" parent="Gamestate" groups=["InstrumentsManager"]]
+script = ExtResource("7_6klxa")
+
+[node name="OrderManager" type="Node" parent="Gamestate" groups=["OrderManager"]]
+
+[node name="MonsterManager" type="Node" parent="Gamestate" groups=["MonsterManager"]]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_dygi0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 0.0
+shadow_enabled = true
+
+[node name="Random Ambience" parent="Environment" instance=ExtResource("1_2eydq")]
+
+[node name="Cave Ambience" type="AudioStreamPlayer" parent="Environment"]
+stream = ExtResource("1_4i2jg")
+volume_db = -9.296
+autoplay = true
+bus = &"Outside"
+
+[node name="Outside" type="Node3D" parent="."]
+transform = Transform3D(1.91069e-15, -4.37113e-08, -1, -1, -4.37113e-08, -4.56524e-21, -4.37113e-08, 1, -4.37113e-08, -0.662891, 0.028496, -2.27599)
+
+[node name="Inside" type="Node3D" parent="."]
+
+[node name="Player" parent="Inside" instance=ExtResource("1_cn7tl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.301121)
+
+[node name="Controls" type="Node3D" parent="Inside"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -1.2071, 0, 0.507104)
+
+[node name="Left Panel" type="Node3D" parent="Inside/Controls"]
+
+[node name="Power" type="Node3D" parent="Inside/Controls/Left Panel"]
+
+[node name="Power Lever" parent="Inside/Controls/Left Panel/Power" instance=ExtResource("4_85ksa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.373843, -0.0441637, -0.000971556)
+can_lock = true
+
+[node name="POWER" type="Label3D" parent="Inside/Controls/Left Panel/Power"]
+transform = Transform3D(0.435468, 0, 4.03392e-08, 0, 0.627263, 0, -2.59559e-08, 0, 0.67678, 0.373905, 0.220151, 0.00366497)
+shaded = true
+texture_filter = 0
+modulate = Color(1, 1, 0, 1)
+text = "POWER"
+font = ExtResource("5_4hre3")
+outline_size = 2
+
+[node name="Backing" type="MeshInstance3D" parent="Inside/Controls/Left Panel/Power"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.371035, 0.00634129, -0.00171244)
+material_override = ExtResource("10_4hre3")
+mesh = SubResource("BoxMesh_hlu4w")
+skeleton = NodePath("../../..")
+
+[node name="Backing2" type="MeshInstance3D" parent="Inside/Controls/Left Panel/Power/Backing"]
+transform = Transform3D(1, 0, 0, 0, 0.101799, 0, 0, 0, 1, 0, -0.238164, 0.00280535)
+material_override = SubResource("StandardMaterial3D_kr4le")
+mesh = SubResource("BoxMesh_hlu4w")
+skeleton = NodePath("../../../..")
+
+[node name="Indicator" parent="Inside/Controls/Left Panel/Power" instance=ExtResource("19_6klxa")]
+transform = Transform3D(0, 0, -0.999999, -1, -4.37114e-08, 0, -4.37114e-08, 0.999999, 0, 0.370465, -0.0437755, 0.0090456)
+colour = Color(0, 0.638955, 1.34766e-06, 1)
+
+[node name="Main Light" type="OmniLight3D" parent="Inside" groups=["Lights"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.308527, 0.223)
+light_color = Color(0.999114, 1, 0.846503, 1)
+light_energy = 0.05
+light_volumetric_fog_energy = 0.0
+light_size = 0.611
+light_specular = 2.32
+shadow_enabled = true
+shadow_bias = 0.15
+omni_range = 2.16733
+script = ExtResource("2_1t40k")
+default_brightness = 0.07
+flicker_freq_sin = 0.08
+flicker_freq_cos = 0.01
+flicker_amp_sin = 0.002
+flicker_amp_cos = 0.005
+
+[node name="Panels" type="Node3D" parent="Inside"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7)
+
+[node name="Left Panel" type="Node3D" parent="Inside/Panels"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.5, 0, 0)
+
+[node name="Emergency Light" type="SpotLight3D" parent="Inside/Panels/Left Panel"]
+transform = Transform3D(0.707107, -0.685649, 0.172872, 0, 0.244478, 0.969655, -0.707107, -0.685649, 0.172872, -0.968112, 0.471023, 0.273953)
+light_color = Color(1, 0, 0, 1)
+light_energy = 0.1
+spot_angle = 38.4912
+script = ExtResource("2_1t40k")
+default_brightness = 0.1
+flicker_amp_sin = 0.005
+flicker_amp_cos = 0.01
+
+[node name="Middle Panel" type="MeshInstance3D" parent="Inside/Panels/Left Panel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.557151, -5.96046e-08)
+material_override = ExtResource("9_fl0ye")
+mesh = SubResource("QuadMesh_6klxa")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_85ksa")
+
+[node name="Middle Panel2" type="MeshInstance3D" parent="Inside/Panels/Left Panel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.548306, -5.96046e-08)
+material_override = ExtResource("9_fl0ye")
+mesh = SubResource("QuadMesh_6klxa")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_85ksa")
+
+[node name="window_panel" parent="Inside/Panels/Left Panel" instance=ExtResource("3_icwx8")]
+transform = Transform3D(-4.78748e-17, -1.39002e-08, -0.318, -0.318, -1.39002e-08, 6.55473e-16, -1.39002e-08, 0.318, -1.39002e-08, -0.5, 0, 0)
+
+[node name="Far Left Panel" type="MeshInstance3D" parent="Inside/Panels/Left Panel"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1.35355, 0, 0.353553)
+material_override = ExtResource("9_fl0ye")
+mesh = SubResource("QuadMesh_6bv3h")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_7hykl")
+
+[node name="Middle Panel" type="Node3D" parent="Inside/Panels"]
+
+[node name="Middle Panel" type="MeshInstance3D" parent="Inside/Panels/Middle Panel"]
+material_override = ExtResource("9_fl0ye")
+mesh = SubResource("QuadMesh_6bv3h")
+surface_material_override/0 = SubResource("StandardMaterial3D_85ksa")
+
+[node name="Right Panel" type="Node3D" parent="Inside/Panels"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.5, 0, 0)
+
+[node name="Right Panel" type="MeshInstance3D" parent="Inside/Panels/Right Panel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+material_override = ExtResource("9_fl0ye")
+mesh = SubResource("QuadMesh_6bv3h")
+surface_material_override/0 = SubResource("StandardMaterial3D_85ksa")
+
+[node name="Far Right panel" type="MeshInstance3D" parent="Inside/Panels/Right Panel"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 1.35355, 0, 0.353553)
+material_override = ExtResource("9_fl0ye")
+mesh = SubResource("QuadMesh_6bv3h")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_85ksa")
+
+[node name="Editor Light" type="DirectionalLight3D" parent="."]
+editor_only = true
+
+[node name="DialDisplay" parent="." node_paths=PackedStringArray("target_dial") instance=ExtResource("20_xmwdf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0999274, 0, -0.696623)
+target_dial = NodePath("../Dial")
+
+[node name="Dial" parent="." instance=ExtResource("21_4i2jg")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.00536714, 0, -0.697378)
+max_value = 100
+label_text = "TEST"
+
+[connection signal="on_lever_return" from="Inside/Controls/Left Panel/Power/Power Lever" to="Gamestate/PowerManager" method="_on_power_lever_on_lever_return"]
+[connection signal="on_lever_triggered" from="Inside/Controls/Left Panel/Power/Power Lever" to="Gamestate/PowerManager" method="_on_power_lever_on_lever_triggered"]

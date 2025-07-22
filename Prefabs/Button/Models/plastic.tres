@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://ddwqejnx75py"]
+
+[ext_resource type="Shader" uid="uid://hee58yo3xus1" path="res://Shared Resources/Shaders/jitter.gdshader" id="1_7lw5l"]
+[ext_resource type="Texture2D" uid="uid://d30a8qijhdyu3" path="res://Prefabs/Button/Models/button_red_plastic.png" id="2_l8vlj"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7lw5l")
+shader_parameter/albedo_texture = ExtResource("2_l8vlj")
+shader_parameter/texture_tile = Vector2(1, 1)
+shader_parameter/snap_enabled = false
+shader_parameter/snap_resolution = 240.0

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Mission" load_steps=3 format=3 uid="uid://djjtt4bgm7lww"]
+
+[ext_resource type="Script" uid="uid://bahlp1rvowort" path="res://Systems/Missions/Mission/Scripts/mission.gd" id="1_8mv3t"]
+[ext_resource type="Resource" uid="uid://lsrsdvufby58" path="res://Missions/scans/fish_scan.tres" id="1_g6l0j"]
+
+[resource]
+script = ExtResource("1_8mv3t")
+zone = Vector2i(2, 4)
+depth = 12
+frequency = 6
+amplitude = 13
+scan_result = ExtResource("1_g6l0j")
+metadata/_custom_type_script = "uid://bahlp1rvowort"

@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dj0i1wie670su"]
+
+[ext_resource type="Texture2D" uid="uid://c6bdy580e31qr" path="res://Shared Resources/Textures/rusty_metal_2.png" id="1_fla8y"]
+
+[resource]
+albedo_color = Color(1.5, 1.5, 1.5, 1)
+albedo_texture = ExtResource("1_fla8y")
+uv1_scale = Vector3(3.655, 3.655, 3.655)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0

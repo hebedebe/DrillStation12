@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://f0u5btyx8nds"]
+
+[ext_resource type="Texture2D" uid="uid://dg7t6t0kygvf3" path="res://Shared Resources/Textures/hazard_stripes.png" id="1_2djrj"]
+
+[resource]
+albedo_texture = ExtResource("1_2djrj")
+uv1_scale = Vector3(1.96, 1.96, 1.96)
+texture_filter = 0

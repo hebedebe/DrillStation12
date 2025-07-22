@@ -1,0 +1,739 @@
+[gd_scene load_steps=69 format=3 uid="uid://bne34n2s22p2g"]
+
+[ext_resource type="PackedScene" uid="uid://bgdauqlwxaan0" path="res://Systems/Gamestate/gamestate.tscn" id="1_1t40k"]
+[ext_resource type="PackedScene" uid="uid://c6m241htjqbtq" path="res://Systems/Random Ambience/random_ambience.tscn" id="1_2eydq"]
+[ext_resource type="PackedScene" uid="uid://u5cl2kcjyo5o" path="res://Systems/Player/player.tscn" id="1_cn7tl"]
+[ext_resource type="Script" uid="uid://bsurbhvktv08o" path="res://Systems/Light Flicker/Scripts/light_flicker.gd" id="2_1t40k"]
+[ext_resource type="AudioStream" uid="uid://budsk1mj5oo4n" path="res://Systems/Gamestate/Audio/power_buzz.mp3" id="2_85ksa"]
+[ext_resource type="AudioStream" uid="uid://cpcki2r0doqku" path="res://Systems/Gamestate/Audio/power_out.mp3" id="2_icwx8"]
+[ext_resource type="Script" uid="uid://cofqheypacbhs" path="res://Systems/Gamestate/Scripts/power_manager.gd" id="2_rx7fb"]
+[ext_resource type="PackedScene" uid="uid://di8e7fo3miu7r" path="res://Panels/Window Panel/Models/window_panel.glb" id="3_icwx8"]
+[ext_resource type="AudioStream" uid="uid://75dtwln6b7e2" path="res://Systems/Gamestate/Audio/machine_clanking.mp3" id="4_4hre3"]
+[ext_resource type="PackedScene" uid="uid://cvxla8y6o6wo6" path="res://Prefabs/Lever/lever.tscn" id="4_85ksa"]
+[ext_resource type="FontFile" uid="uid://bjuo2qd2s2kbv" path="res://Shared Resources/Fonts/times.ttf" id="5_4hre3"]
+[ext_resource type="Script" uid="uid://bc4tkjxvgy2v0" path="res://Systems/Gamestate/Scripts/drill_manager.gd" id="6_xmwdf"]
+[ext_resource type="Script" uid="uid://cpu75j7nymj8v" path="res://Systems/Gamestate/Scripts/sensors_manager.gd" id="7_6klxa"]
+[ext_resource type="CompressedTexture3D" uid="uid://dqpvuycimbbo" path="res://Shared Resources/LUTs/Fallout.cube-s32.png" id="8_w317b"]
+[ext_resource type="Script" uid="uid://qyeqvr6qnyk4" path="res://Systems/Gamestate/Scripts/order_manager.gd" id="8_w534x"]
+[ext_resource type="Script" uid="uid://bahlp1rvowort" path="res://Systems/Missions/Mission/Scripts/mission.gd" id="9_shjad"]
+[ext_resource type="AudioStream" uid="uid://c3yvqbfxefysd" path="res://Systems/Random Ambience/Audio/distant_sound_1.mp3" id="9_w317b"]
+[ext_resource type="Material" uid="uid://cj8um0hpkv5i5" path="res://Shared Resources/Materials/rusty_metal.tres" id="10_4hre3"]
+[ext_resource type="Resource" uid="uid://djjtt4bgm7lww" path="res://Missions/missions/fish_mission.tres" id="10_ubfli"]
+[ext_resource type="AudioStream" uid="uid://c7nl48f7dwmeu" path="res://water-drops-26638.mp3" id="11_sgksr"]
+[ext_resource type="Resource" uid="uid://cx3gal1h8yibc" path="res://Missions/missions/snake_mission.tres" id="11_ubfli"]
+[ext_resource type="Shader" uid="uid://hee58yo3xus1" path="res://Shared Resources/Shaders/jitter.gdshader" id="12_5p3no"]
+[ext_resource type="Texture2D" uid="uid://cg0tlsm0l358x" path="res://Shared Resources/Textures/stone.png" id="12_k4cyw"]
+[ext_resource type="Texture2D" uid="uid://dg7t6t0kygvf3" path="res://Shared Resources/Textures/hazard_stripes.png" id="13_fl0ye"]
+[ext_resource type="Texture2D" uid="uid://bgvda7jiseko4" path="res://Shared Resources/Textures/rusty_metal.png" id="14_lkl8j"]
+[ext_resource type="AudioStream" uid="uid://dveg8oi6u0itu" path="res://Voicelines/EndDay/end_day.mp3" id="16_i6byu"]
+[ext_resource type="Material" uid="uid://dj0i1wie670su" path="res://Shared Resources/Materials/rusty_metal_brown.tres" id="16_kyu6f"]
+[ext_resource type="Texture2D" uid="uid://buyqxcdifyu4x" path="res://Monsters/Nightman/nightman.png" id="17_5qr25"]
+[ext_resource type="Script" uid="uid://djvgyvvuvwdlp" path="res://Monsters/Nightman/nightman.gd" id="17_bxlrs"]
+[ext_resource type="AudioStream" uid="uid://i4cy7bjsawy3" path="res://Monsters/Nightman/breathing.mp3" id="18_vlj6p"]
+[ext_resource type="PackedScene" uid="uid://ctklbdx6y1gu7" path="res://Prefabs/Indicators/Square Button Indicator/indicator.tscn" id="19_6klxa"]
+[ext_resource type="PackedScene" uid="uid://gnupm32ra23x" path="res://Prefabs/Signal Display/signal_display.tscn" id="19_iw37t"]
+[ext_resource type="AudioStream" uid="uid://cnrbs3yhu2ycx" path="res://Monsters/Nightman/nightman_stinger.mp3" id="20_js28k"]
+[ext_resource type="PackedScene" uid="uid://y6bie7xhw12w" path="res://Prefabs/Button/button.tscn" id="20_sm4lt"]
+[ext_resource type="PackedScene" uid="uid://b86ov60y182p7" path="res://Prefabs/Dial Display/DialDisplay.tscn" id="20_xmwdf"]
+[ext_resource type="PackedScene" uid="uid://cwn33igqtokph" path="res://Prefabs/Dial/Dial.tscn" id="21_4i2jg"]
+[ext_resource type="Material" uid="uid://chom0ctekue0b" path="res://Shared Resources/Materials/hazard.tres" id="21_w317b"]
+[ext_resource type="PackedScene" uid="uid://csggw5gv80sxo" path="res://Prefabs/Square Button/square_button.tscn" id="22_jyn32"]
+[ext_resource type="PackedScene" uid="uid://dlavq24g0tj2b" path="res://Prefabs/Slider/slider.tscn" id="25_jyn32"]
+[ext_resource type="Material" uid="uid://bqqd8eubwvkq2" path="res://Shared Resources/Materials/metal_plate.tres" id="26_lj5pt"]
+[ext_resource type="Material" uid="uid://cpcjpkgksgu2w" path="res://Shared Resources/Materials/metal_plate_2.tres" id="26_lkl8j"]
+[ext_resource type="Script" uid="uid://5yfsohr8mr7l" path="res://Prefabs/Screen/Scripts/screen.gd" id="27_ify8f"]
+[ext_resource type="Texture2D" uid="uid://clbykcp1527b1" path="res://Missions/textures/fish_skeleton.png" id="27_sgksr"]
+[ext_resource type="ArrayMesh" uid="uid://dj8hlvqpp5eas" path="res://Shared Resources/Models/cave.obj" id="29_m72fy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dygi0"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_energy_multiplier = 0.0
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+ground_energy_multiplier = 0.0
+
+[sub_resource type="Sky" id="Sky_jr1ro"]
+sky_material = SubResource("ProceduralSkyMaterial_dygi0")
+
+[sub_resource type="Environment" id="Environment_dygi0"]
+background_mode = 5
+sky = SubResource("Sky_jr1ro")
+ambient_light_source = 2
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_read_sky_light = false
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1298
+volumetric_fog_emission = Color(0.454524, 0.454524, 0.454524, 1)
+volumetric_fog_emission_energy = 0.1
+volumetric_fog_sky_affect = 0.0
+adjustment_enabled = true
+adjustment_color_correction = ExtResource("8_w317b")
+
+[sub_resource type="Gradient" id="Gradient_js28k"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jc562"]
+gradient = SubResource("Gradient_js28k")
+width = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kyu6f"]
+render_priority = 0
+shader = ExtResource("12_5p3no")
+shader_parameter/albedo_texture = ExtResource("12_k4cyw")
+shader_parameter/texture_tile = Vector2(8, 8)
+shader_parameter/snap_enabled = false
+shader_parameter/snap_resolution = 240.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_w534x"]
+radial_segments = 12
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uj2ha"]
+top_radius = 0.6
+bottom_radius = 0.6
+height = 0.2
+radial_segments = 12
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_shjad"]
+radial_segments = 12
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ubfli"]
+radial_segments = 12
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w317b"]
+albedo_texture = ExtResource("14_lkl8j")
+uv1_scale = Vector3(1.26, 1.26, 1.26)
+uv1_offset = Vector3(0, -0.195, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_hlu4w"]
+size = Vector3(0.27, 0.52, 0.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kr4le"]
+albedo_texture = ExtResource("13_fl0ye")
+uv1_scale = Vector3(4.395, 1, 1)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_lj5pt"]
+size = Vector3(0.17, 0.01, 0.011)
+
+[sub_resource type="GDScript" id="GDScript_2eydq"]
+script/source = "extends Node3D
+
+var gamestate: Gamestate
+
+func _ready():
+	gamestate = get_tree().get_first_node_in_group(\"Gamestate\")
+
+func _process(_delta):
+	$Indicator_On.on = gamestate.drill_manager.drilling
+	$Indicator_Off.on = not $Indicator_On.on
+"
+
+[sub_resource type="BoxMesh" id="BoxMesh_2eydq"]
+size = Vector3(0.025, 0.155, 0.155)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sm4lt"]
+size = Vector3(0.048, 0.202, 0.342)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2eydq"]
+albedo_color = Color(0.0313726, 0.0862745, 0.0313726, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_sm4lt"]
+size = Vector2(0.33, 0.19)
+
+[sub_resource type="GDScript" id="GDScript_lkl8j"]
+script/source = "extends Node3D
+
+@onready var not_ready_indicator = $ScanNotReadyIndicator
+@onready var half_ready_indicator = $ScanHalfReadyIndicator
+@onready var ready_indicator = $ScanReadyIndicator
+
+@onready var sensors_manager
+@onready var drill_manager
+
+func _ready():
+	var gamestate: Gamestate = get_tree().get_first_node_in_group(\"Gamestate\")
+	sensors_manager = gamestate.sensors_manager
+	drill_manager = gamestate.drill_manager
+	
+func _process(_delta):
+	not_ready_indicator.on = not sensors_manager.aligned() and not drill_manager.drilling_complete()
+	half_ready_indicator.on = (sensors_manager.aligned() and not drill_manager.drilling_complete()) or (drill_manager.drilling_complete() and not sensors_manager.aligned())
+	ready_indicator.on = sensors_manager.aligned() and drill_manager.drilling_complete()
+"
+
+[sub_resource type="QuadMesh" id="QuadMesh_6klxa"]
+size = Vector2(1, 0.563)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85ksa"]
+albedo_color = Color(0.5, 1, 0.5, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_6bv3h"]
+size = Vector2(1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7hykl"]
+albedo_color = Color(1, 0.5, 0.5, 1)
+
+[node name="Game" type="Node3D"]
+
+[node name="Gamestate" parent="." instance=ExtResource("1_1t40k")]
+
+[node name="PowerManager" type="Node" parent="Gamestate" groups=["PowerManager"]]
+script = ExtResource("2_rx7fb")
+
+[node name="PowerUp" type="AudioStreamPlayer" parent="Gamestate/PowerManager"]
+bus = &"Inside"
+
+[node name="PowerOff" type="AudioStreamPlayer" parent="Gamestate/PowerManager"]
+stream = ExtResource("2_icwx8")
+volume_db = -5.229
+pitch_scale = 0.8
+bus = &"Inside"
+
+[node name="PowerAmbient" type="AudioStreamPlayer" parent="Gamestate/PowerManager"]
+stream = ExtResource("2_85ksa")
+pitch_scale = 0.93
+bus = &"Inside"
+
+[node name="DrillManager" type="Node" parent="Gamestate" groups=["DrillManager", "needs_power"]]
+script = ExtResource("6_xmwdf")
+
+[node name="DrillSound" type="AudioStreamPlayer3D" parent="Gamestate/DrillManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.64162, 0, -4.87487)
+stream = ExtResource("4_4hre3")
+volume_db = -20.347
+bus = &"Outside"
+
+[node name="SensorsManager" type="Node" parent="Gamestate" groups=["InstrumentsManager"]]
+script = ExtResource("7_6klxa")
+target_frequency = 4
+target_amplitude = 12
+
+[node name="OrderManager" type="Node" parent="Gamestate" groups=["OrderManager"]]
+script = ExtResource("8_w534x")
+current_orders = Array[ExtResource("9_shjad")]([ExtResource("10_ubfli"), ExtResource("11_ubfli")])
+
+[node name="Orders Complete" type="AudioStreamPlayer" parent="Gamestate/OrderManager"]
+stream = ExtResource("16_i6byu")
+bus = &"Inside"
+
+[node name="MonsterManager" type="Node" parent="Gamestate" groups=["MonsterManager"]]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_dygi0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 0.0
+shadow_enabled = true
+
+[node name="Random Ambience" parent="Environment" instance=ExtResource("1_2eydq")]
+sounds = Array[AudioStream]([ExtResource("9_w317b")])
+
+[node name="Cave Ambience" type="AudioStreamPlayer" parent="Environment"]
+stream = ExtResource("11_sgksr")
+volume_db = -15.687
+autoplay = true
+bus = &"Outside"
+
+[node name="Outside" type="Node3D" parent="."]
+transform = Transform3D(1.91069e-15, -4.37113e-08, -1, -1, -4.37113e-08, -4.56524e-21, -4.37113e-08, 1, -4.37113e-08, -0.662891, 0.028496, -2.27599)
+
+[node name="Monsters" type="Node3D" parent="Outside"]
+
+[node name="Nightman" type="Node3D" parent="Outside/Monsters"]
+script = ExtResource("17_bxlrs")
+
+[node name="AtWindow" type="Node3D" parent="Outside/Monsters/Nightman"]
+
+[node name="Sprite" type="Sprite3D" parent="Outside/Monsters/Nightman/AtWindow"]
+transform = Transform3D(-3.09086e-08, -1, 7.46199e-08, 0.707107, -7.46199e-08, -0.707107, 0.707107, 3.09085e-08, 0.707107, -6.14673e-08, 1.8705, 0.327365)
+modulate = Color(0.796243, 0.796243, 0.796243, 1)
+pixel_size = 0.0005
+billboard = 1
+texture_filter = 0
+render_priority = 1
+texture = ExtResource("17_5qr25")
+
+[node name="Spritebody" type="Sprite3D" parent="Outside/Monsters/Nightman/AtWindow/Sprite"]
+transform = Transform3D(1, 5.32907e-15, 0, -8.88178e-15, 1, 1.77636e-15, 0, 1.77636e-15, 1, 0, -0.21174, 0)
+modulate = Color(0.796243, 0.796243, 0.796243, 1)
+pixel_size = 0.4
+billboard = 1
+texture_filter = 0
+texture = SubResource("GradientTexture1D_jc562")
+
+[node name="Breathing" type="AudioStreamPlayer3D" parent="Outside/Monsters/Nightman/AtWindow"]
+transform = Transform3D(1, 0, 7.6233e-21, 0, 1, 0, 0, 0, 1, -8.19564e-08, 1.87823, 0.274202)
+stream = ExtResource("18_vlj6p")
+volume_db = -42.544
+bus = &"Outside"
+
+[node name="Stinger" type="AudioStreamPlayer" parent="Outside/Monsters/Nightman"]
+stream = ExtResource("20_js28k")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Outside/Monsters/Nightman"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0447563, 1.77788, 0.217449)
+aabb = AABB(0, 0, 0, 0.2, 0.2, 0.2)
+
+[node name="Cave" type="MeshInstance3D" parent="Outside"]
+transform = Transform3D(2.67143e-08, -0.893616, -2.84977e-08, -0.611154, -3.90611e-08, 0.651952, -0.651952, 2.66451e-15, -0.611154, 0.503172, 0.987129, 0.510238)
+material_override = SubResource("ShaderMaterial_kyu6f")
+mesh = ExtResource("29_m72fy")
+skeleton = NodePath("../../Inside/Controls/Middle_Panel/Scanner")
+
+[node name="Cave Light" type="SpotLight3D" parent="Outside/Cave" groups=["needs_power"]]
+transform = Transform3D(0.974348, -0.0919439, 0.205405, 0.0363935, 0.965094, 0.259363, -0.222082, -0.245234, 0.943684, -0.340863, 0.703863, 0.841856)
+light_color = Color(0.999999, 0.665186, 0.517252, 1)
+light_energy = 3.204
+light_volumetric_fog_energy = 0.0
+spot_range = 4096.0
+spot_attenuation = 2.0
+script = ExtResource("2_1t40k")
+default_brightness = 3.204
+
+[node name="Drill" type="Node3D" parent="Outside"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Outside/Drill"]
+transform = Transform3D(2.32315e-08, 1.67025, -7.30088e-08, -1.67025, 2.32315e-08, 7.30088e-08, 7.30088e-08, 7.30089e-08, 1.67025, -1.71956, -3.27676, 6.87103)
+mesh = SubResource("CylinderMesh_w534x")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Outside/Drill"]
+transform = Transform3D(2.32315e-08, 1.67025, -7.30088e-08, -1.67025, 2.32315e-08, 7.30088e-08, 7.30088e-08, 7.30089e-08, 1.67025, -1.71956, -3.27676, 6.87103)
+material_override = ExtResource("16_kyu6f")
+mesh = SubResource("CylinderMesh_w534x")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Outside/Drill"]
+transform = Transform3D(2.32315e-08, 1.67025, -7.30088e-08, -1.67025, 2.32315e-08, 7.30088e-08, 7.30088e-08, 7.30089e-08, 1.67025, -0.475103, -3.27676, 6.87103)
+material_override = ExtResource("21_w317b")
+mesh = SubResource("CylinderMesh_uj2ha")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Outside/Drill"]
+transform = Transform3D(2.32315e-08, 1.67025, -7.30088e-08, -1.67025, 2.32315e-08, 7.30088e-08, 7.30088e-08, 7.30089e-08, 1.67025, -1.54906, -3.27676, 6.87103)
+material_override = ExtResource("21_w317b")
+mesh = SubResource("CylinderMesh_uj2ha")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Outside/Drill"]
+transform = Transform3D(1.54687e-08, 1.11214, -4.86131e-08, -1.11214, 1.54687e-08, 4.86131e-08, 4.86131e-08, 4.86131e-08, 1.11214, -0.439517, -3.27676, 6.87103)
+material_override = ExtResource("16_kyu6f")
+mesh = SubResource("CylinderMesh_shjad")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Outside/Drill"]
+transform = Transform3D(1.16843e-08, 3.00568, -3.67198e-08, -0.840054, 4.18059e-08, 3.67198e-08, 3.67198e-08, 1.31382e-07, 0.840053, 2.16426, -3.27676, 6.87103)
+material_override = ExtResource("10_4hre3")
+mesh = SubResource("CylinderMesh_ubfli")
+skeleton = NodePath("../..")
+
+[node name="Inside" type="Node3D" parent="."]
+
+[node name="Main Light" type="OmniLight3D" parent="Inside" groups=["Lights"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.308527, 0.223)
+light_color = Color(1, 0.861857, 0.691205, 1)
+light_energy = 0.15
+light_volumetric_fog_energy = 0.0
+light_size = 0.611
+light_specular = 2.32
+shadow_bias = 0.15
+omni_range = 2.16733
+script = ExtResource("2_1t40k")
+default_brightness = 0.2
+flicker_freq_sin = 0.08
+flicker_freq_cos = 0.01
+flicker_amp_sin = 0.002
+flicker_amp_cos = 0.005
+
+[node name="Player" parent="Inside" instance=ExtResource("1_cn7tl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.301121)
+
+[node name="Controls" type="Node3D" parent="Inside"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -1.2071, 0, 0.507104)
+
+[node name="Left_Panel" type="Node3D" parent="Inside/Controls"]
+
+[node name="Power" type="Node3D" parent="Inside/Controls/Left_Panel"]
+
+[node name="Power_Lever" parent="Inside/Controls/Left_Panel/Power" instance=ExtResource("4_85ksa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.373843, -0.0441637, -0.000971556)
+can_lock = true
+
+[node name="POWER" type="Label3D" parent="Inside/Controls/Left_Panel/Power"]
+transform = Transform3D(0.435468, 0, 4.03392e-08, 0, 0.627263, 0, -2.59559e-08, 0, 0.67678, 0.373905, 0.220151, 0.00366497)
+shaded = true
+texture_filter = 0
+modulate = Color(1, 1, 0, 1)
+text = "POWER"
+font = ExtResource("5_4hre3")
+outline_size = 2
+
+[node name="Backing" type="MeshInstance3D" parent="Inside/Controls/Left_Panel/Power"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.371035, 0.00634129, -0.00171244)
+material_override = SubResource("StandardMaterial3D_w317b")
+mesh = SubResource("BoxMesh_hlu4w")
+skeleton = NodePath("../../..")
+
+[node name="Backing2" type="MeshInstance3D" parent="Inside/Controls/Left_Panel/Power/Backing"]
+transform = Transform3D(1, 0, 0, 0, 0.101799, 0, 0, 0, 1, 0, -0.238164, 0.00280535)
+material_override = SubResource("StandardMaterial3D_kr4le")
+mesh = SubResource("BoxMesh_hlu4w")
+skeleton = NodePath("../../../..")
+
+[node name="Indicator" parent="Inside/Controls/Left_Panel/Power" instance=ExtResource("19_6klxa")]
+transform = Transform3D(0, 0, -0.999999, -1, -4.37114e-08, 0, -4.37114e-08, 0.999999, 0, 0.370465, -0.0437755, 0.0090456)
+colour = Color(0, 0.638955, 1.34766e-06, 1)
+
+[node name="Middle_Panel" type="Node3D" parent="Inside/Controls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21573, 0, 1.20787)
+
+[node name="DrillControls" type="Node3D" parent="Inside/Controls/Middle_Panel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025006, 0.0476943)
+
+[node name="Sector" type="Node3D" parent="Inside/Controls/Middle_Panel/DrillControls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0957105, -0.355644)
+
+[node name="DialDisplay" parent="Inside/Controls/Middle_Panel/DrillControls/Sector" node_paths=PackedStringArray("target_dial") instance=ExtResource("20_xmwdf")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -0.0125978, 0.00232582, 0.0713832)
+target_dial = NodePath("../Y_Slider")
+
+[node name="Y" type="Label3D" parent="Inside/Controls/Middle_Panel/DrillControls/Sector/DialDisplay"]
+transform = Transform3D(0.217718, 0, 5.3777e-09, 0, 0.313608, 0, -3.46024e-09, 0, 0.338365, -0.0500246, -0.000476062, -0.000911772)
+shaded = true
+texture_filter = 0
+modulate = Color(1, 1, 0, 1)
+text = "Y
+"
+font = ExtResource("5_4hre3")
+font_size = 24
+outline_size = 2
+
+[node name="DialDisplay2" parent="Inside/Controls/Middle_Panel/DrillControls/Sector" node_paths=PackedStringArray("target_dial") instance=ExtResource("20_xmwdf")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -0.0125978, 0.00121199, -0.0362286)
+target_dial = NodePath("../X_Slider")
+
+[node name="X" type="Label3D" parent="Inside/Controls/Middle_Panel/DrillControls/Sector/DialDisplay2"]
+transform = Transform3D(0.217718, 0, 5.3777e-09, 0, 0.313608, 0, -3.46024e-09, 0, 0.338365, -0.0527064, -0.000979811, -0.000911772)
+shaded = true
+texture_filter = 0
+modulate = Color(1, 1, 0, 1)
+text = "X
+"
+font = ExtResource("5_4hre3")
+font_size = 24
+outline_size = 2
+
+[node name="X_Slider" parent="Inside/Controls/Middle_Panel/DrillControls/Sector" instance=ExtResource("25_jyn32")]
+transform = Transform3D(0, -1, 0, -1, 0, 4.37114e-08, -4.37114e-08, 0, -1, -0.0134822, 0.134096, 0.00411341)
+max_value = 8
+distance_range = 0.17
+
+[node name="Bar" type="MeshInstance3D" parent="Inside/Controls/Middle_Panel/DrillControls/Sector/X_Slider"]
+transform = Transform3D(-4.37114e-08, -1, 0, 0, 0, 1, -1, 4.37114e-08, 0, 0, -0.00493574, 0)
+material_override = ExtResource("10_4hre3")
+mesh = SubResource("BoxMesh_lj5pt")
+skeleton = NodePath("../../DialDisplay")
+
+[node name="Y_Slider" parent="Inside/Controls/Middle_Panel/DrillControls/Sector" instance=ExtResource("25_jyn32")]
+transform = Transform3D(0, -1, 0, -1, 0, 4.37114e-08, -4.37114e-08, 0, -1, -0.0134822, 0.0637984, 0.00411341)
+max_value = 8
+distance_range = 0.17
+
+[node name="Bar" type="MeshInstance3D" parent="Inside/Controls/Middle_Panel/DrillControls/Sector/Y_Slider"]
+transform = Transform3D(-4.37114e-08, -1, 0, 0, 0, 1, -1, 4.37114e-08, 0, 0, -0.00493574, 0)
+material_override = ExtResource("10_4hre3")
+mesh = SubResource("BoxMesh_lj5pt")
+skeleton = NodePath("../../DialDisplay")
+
+[node name="SECTOR" type="Label3D" parent="Inside/Controls/Middle_Panel/DrillControls/Sector"]
+transform = Transform3D(6.92099e-09, 0, -0.67678, 0, 0.627263, 0, 0.435468, 0, 1.07562e-08, -0.011686, 0.183292, 0.00679335)
+shaded = true
+texture_filter = 0
+modulate = Color(1, 1, 0, 1)
+text = "SECTOR"
+font = ExtResource("5_4hre3")
+font_size = 24
+outline_size = 2
+
+[node name="Depth" type="Node3D" parent="Inside/Controls/Middle_Panel/DrillControls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00981379, 0.0316118, -0.373879)
+
+[node name="KM" type="Label3D" parent="Inside/Controls/Middle_Panel/DrillControls/Depth"]
+transform = Transform3D(2.97591e-09, 0, -0.291004, 0, 0.269713, 0, 0.187244, 0, 4.62499e-09, 0, 0.00302656, 0.110026)
+shaded = true
+texture_filter = 0
+modulate = Color(1, 1, 0, 1)
+text = "Km"
+font = ExtResource("5_4hre3")
+font_size = 24
+outline_size = 2
+
+[node name="Depth_Dial" parent="Inside/Controls/Middle_Panel/DrillControls/Depth" instance=ExtResource("21_4i2jg")]
+transform = Transform3D(0, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 0, 0, -0.00197172, 7.77394e-05, -0.0478101)
+max_value = 25
+label_text = "Depth"
+
+[node name="Depth_Dial_Display" parent="Inside/Controls/Middle_Panel/DrillControls/Depth" node_paths=PackedStringArray("target_dial") instance=ExtResource("20_xmwdf")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -0.00206816, 0.00115243, 0.0436364)
+target_dial = NodePath("../Depth_Dial")
+
+[node name="Drill_On_Off" type="Node3D" parent="Inside/Controls/Middle_Panel/DrillControls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.314216, -0.362822)
+script = SubResource("GDScript_2eydq")
+
+[node name="DRILL" type="Label3D" parent="Inside/Controls/Middle_Panel/DrillControls/Drill_On_Off"]
+transform = Transform3D(6.92099e-09, 0, -0.67678, 0, 0.627263, 0, 0.435468, 0, 1.07562e-08, -0.011686, 0.282133, 0.00679336)
+shaded = true
+texture_filter = 0
+modulate = Color(1, 1, 0, 1)
+text = "DRILL
+"
+font = ExtResource("5_4hre3")
+font_size = 24
+outline_size = 2
+
+[node name="Backing" type="MeshInstance3D" parent="Inside/Controls/Middle_Panel/DrillControls/Drill_On_Off"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.158851, 0)
+material_override = ExtResource("21_w317b")
+mesh = SubResource("BoxMesh_2eydq")
+
+[node name="Button" parent="Inside/Controls/Middle_Panel/DrillControls/Drill_On_Off" instance=ExtResource("20_sm4lt")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -0.00562555, 0.159214, -0.000865029)
+
+[node name="Indicator_On" parent="Inside/Controls/Middle_Panel/DrillControls/Drill_On_Off" instance=ExtResource("19_6klxa")]
+transform = Transform3D(0, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 0, 0, -0.0150371, 0.102373, -0.0281945)
+
+[node name="Indicator_Off" parent="Inside/Controls/Middle_Panel/DrillControls/Drill_On_Off" instance=ExtResource("19_6klxa")]
+transform = Transform3D(0, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 0, 0, -0.015, 0.102, 0.028)
+on = true
+colour = Color(1, 0, 0, 1)
+
+[node name="Sensors" type="Node3D" parent="Inside/Controls/Middle_Panel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0115614, -0.312305, -0.19508)
+
+[node name="Frequency_Dial" parent="Inside/Controls/Middle_Panel/Sensors" instance=ExtResource("21_4i2jg")]
+transform = Transform3D(0, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 0, 0, 0.0013504, 0.196474, 0.150289)
+label_text = "Freq"
+
+[node name="Amplitude_Dial" parent="Inside/Controls/Middle_Panel/Sensors" instance=ExtResource("21_4i2jg")]
+transform = Transform3D(0, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 0, 0, 0.0013504, 0.096474, 0.150289)
+label_text = "Amp"
+
+[node name="Frequency_Dial_Display" parent="Inside/Controls/Middle_Panel/Sensors" node_paths=PackedStringArray("target_dial") instance=ExtResource("20_xmwdf")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -0.00208652, 0.196474, 0.230017)
+target_dial = NodePath("../Frequency_Dial")
+
+[node name="Amplitude_Dial_Display" parent="Inside/Controls/Middle_Panel/Sensors" node_paths=PackedStringArray("target_dial") instance=ExtResource("20_xmwdf")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -0.00216687, 0.0967683, 0.229578)
+target_dial = NodePath("../Amplitude_Dial")
+
+[node name="SignalDisplay" parent="Inside/Controls/Middle_Panel/Sensors" node_paths=PackedStringArray("freq_dial", "amp_dial") instance=ExtResource("19_iw37t")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -0.0163898, 0.145324, 0.379394)
+freq_dial = NodePath("../Frequency_Dial")
+amp_dial = NodePath("../Amplitude_Dial")
+
+[node name="Scanner" type="Node3D" parent="Inside/Controls/Middle_Panel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0968045, 0.103778)
+
+[node name="SCANNER" type="Label3D" parent="Inside/Controls/Middle_Panel/Scanner"]
+transform = Transform3D(6.92099e-09, 0, -0.67678, 0, 0.627263, 0, 0.435468, 0, 1.07562e-08, -0.0153104, 0.167589, 0.0124384)
+shaded = true
+texture_filter = 0
+modulate = Color(1, 1, 0, 1)
+text = "SCANNER"
+font = ExtResource("5_4hre3")
+font_size = 24
+outline_size = 2
+
+[node name="Backing" type="MeshInstance3D" parent="Inside/Controls/Middle_Panel/Scanner"]
+transform = Transform3D(1.35726, 0, 0, 0, 1.35726, 0, 0, 0, 1.35726, 0.010327, -0.00665727, 0.0161143)
+material_override = ExtResource("10_4hre3")
+mesh = SubResource("BoxMesh_sm4lt")
+
+[node name="Screen" type="MeshInstance3D" parent="Inside/Controls/Middle_Panel/Scanner/Backing"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0243649, 0, 0)
+material_override = SubResource("StandardMaterial3D_2eydq")
+mesh = SubResource("QuadMesh_sm4lt")
+
+[node name="Button" parent="Inside/Controls/Middle_Panel/Scanner" instance=ExtResource("22_jyn32")]
+transform = Transform3D(0, 0, -1.38765, 0, 3.60421, 0, 3.60421, 0, 0, -0.0122019, 0.0068779, 0.321022)
+
+[node name="Scan" type="Label3D" parent="Inside/Controls/Middle_Panel/Scanner/Button"]
+transform = Transform3D(0.0453883, 0, 1.12111e-09, 0, 0.0653788, 0, -7.21368e-10, 0, 0.07054, -0.000252657, 0.0199543, -0.00013645)
+shaded = true
+texture_filter = 0
+modulate = Color(1, 1, 0, 1)
+text = "SCAN
+"
+font = ExtResource("5_4hre3")
+font_size = 24
+outline_size = 2
+
+[node name="Indicators" type="Node3D" parent="Inside/Controls/Middle_Panel/Scanner"]
+script = SubResource("GDScript_lkl8j")
+
+[node name="ScanNotReadyIndicator" parent="Inside/Controls/Middle_Panel/Scanner/Indicators" instance=ExtResource("19_6klxa")]
+transform = Transform3D(0, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 0, 0, -0.0114834, -0.0597799, 0.291595)
+on = true
+colour = Color(1, 0, 0, 1)
+
+[node name="ScanHalfReadyIndicator" parent="Inside/Controls/Middle_Panel/Scanner/Indicators" instance=ExtResource("19_6klxa")]
+transform = Transform3D(0, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 0, 0, -0.0114834, -0.0597799, 0.319904)
+colour = Color(1, 1, 0, 1)
+
+[node name="ScanReadyIndicator" parent="Inside/Controls/Middle_Panel/Scanner/Indicators" instance=ExtResource("19_6klxa")]
+transform = Transform3D(0, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 0, 0, -0.0114834, -0.0597799, 0.350111)
+
+[node name="Screen" type="Node3D" parent="Inside/Controls/Middle_Panel/Scanner" groups=["needs_power", "scanner"]]
+script = ExtResource("27_ify8f")
+
+[node name="Image" type="Sprite3D" parent="Inside/Controls/Middle_Panel/Scanner/Screen"]
+transform = Transform3D(-5.16926e-08, 0, -1.18259, -1.18256, -0.00728591, 5.16917e-08, -0.00728591, 1.18256, 3.18477e-10, -0.0230075, -0.0018181, 0.142402)
+modulate = Color(0.0862745, 1, 0.0784314, 1)
+pixel_size = 0.0003
+texture_filter = 0
+texture = ExtResource("27_sgksr")
+
+[node name="Title" type="Label3D" parent="Inside/Controls/Middle_Panel/Scanner/Screen"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0230107, 0.104759, -0.191563)
+pixel_size = 0.0001
+double_sided = false
+texture_filter = 0
+modulate = Color(0.0862745, 1, 0.0784314, 1)
+text = "this is a bucket"
+font = ExtResource("5_4hre3")
+font_size = 192
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 0
+uppercase = true
+text_direction = 1
+
+[node name="Description" type="Label3D" parent="Inside/Controls/Middle_Panel/Scanner/Screen"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0230107, 0.078426, -0.191563)
+pixel_size = 0.0001
+double_sided = false
+texture_filter = 0
+modulate = Color(0.0862745, 1, 0.0784314, 1)
+text = "this is a bucket"
+font = ExtResource("5_4hre3")
+font_size = 192
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 0
+text_direction = 1
+
+[node name="Panels" type="Node3D" parent="Inside"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7)
+
+[node name="Left Panel" type="Node3D" parent="Inside/Panels"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.5, 0, 0)
+
+[node name="Emergency Light" type="SpotLight3D" parent="Inside/Panels/Left Panel"]
+transform = Transform3D(0.707107, -0.630719, 0.319677, 0, 0.452092, 0.891971, -0.707107, -0.630719, 0.319677, -0.914488, 0.423444, 0.327577)
+light_color = Color(1, 0, 0, 1)
+light_energy = 0.1
+spot_angle = 38.4912
+script = ExtResource("2_1t40k")
+default_brightness = 0.1
+flicker_amp_sin = 0.005
+flicker_amp_cos = 0.01
+
+[node name="Middle Panel" type="MeshInstance3D" parent="Inside/Panels/Left Panel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.557151, -5.96046e-08)
+material_override = ExtResource("26_lj5pt")
+mesh = SubResource("QuadMesh_6klxa")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_85ksa")
+
+[node name="Middle Panel2" type="MeshInstance3D" parent="Inside/Panels/Left Panel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.548306, -5.96046e-08)
+material_override = ExtResource("26_lj5pt")
+mesh = SubResource("QuadMesh_6klxa")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_85ksa")
+
+[node name="window_panel" parent="Inside/Panels/Left Panel" instance=ExtResource("3_icwx8")]
+transform = Transform3D(-4.78748e-17, -1.39002e-08, -0.318, -0.318, -1.39002e-08, 6.55473e-16, -1.39002e-08, 0.318, -1.39002e-08, -0.5, 0, 0)
+
+[node name="Far Left Panel" type="MeshInstance3D" parent="Inside/Panels/Left Panel"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1.35355, 0, 0.353553)
+material_override = ExtResource("26_lj5pt")
+mesh = SubResource("QuadMesh_6bv3h")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_7hykl")
+
+[node name="Middle Panel" type="Node3D" parent="Inside/Panels"]
+
+[node name="Middle Panel" type="MeshInstance3D" parent="Inside/Panels/Middle Panel"]
+material_override = ExtResource("26_lkl8j")
+mesh = SubResource("QuadMesh_6bv3h")
+surface_material_override/0 = SubResource("StandardMaterial3D_85ksa")
+
+[node name="Emergency Light2" type="SpotLight3D" parent="Inside/Panels/Middle Panel"]
+transform = Transform3D(1, 4.2385e-08, -1.06865e-08, 0, 0.244478, 0.969655, 4.37114e-08, -0.969655, 0.244478, 0.0628431, 0.765332, 0.212238)
+light_color = Color(1, 0, 0, 1)
+light_energy = 0.1
+spot_angle = 38.4912
+script = ExtResource("2_1t40k")
+default_brightness = 0.1
+flicker_amp_sin = 0.005
+flicker_amp_cos = 0.01
+
+[node name="Emergency Light3" type="SpotLight3D" parent="Inside/Panels/Middle Panel"]
+transform = Transform3D(0.691475, 0.700479, -0.176611, 0, 0.244478, 0.969655, 0.7224, -0.670492, 0.169051, 0.852683, 0.765332, 0.508272)
+light_color = Color(1, 0, 0, 1)
+light_energy = 0.1
+spot_angle = 38.4912
+script = ExtResource("2_1t40k")
+default_brightness = 0.1
+flicker_amp_sin = 0.005
+flicker_amp_cos = 0.01
+
+[node name="Right Panel" type="Node3D" parent="Inside/Panels"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.5, 0, 0)
+
+[node name="Right Panel" type="MeshInstance3D" parent="Inside/Panels/Right Panel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+material_override = ExtResource("26_lj5pt")
+mesh = SubResource("QuadMesh_6bv3h")
+surface_material_override/0 = SubResource("StandardMaterial3D_85ksa")
+
+[node name="Far Right panel" type="MeshInstance3D" parent="Inside/Panels/Right Panel"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 1.35355, 0, 0.353553)
+material_override = ExtResource("26_lj5pt")
+mesh = SubResource("QuadMesh_6bv3h")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_85ksa")
+
+[node name="Editor Light" type="DirectionalLight3D" parent="."]
+visible = false
+editor_only = true
+
+[connection signal="screen_entered" from="Outside/Monsters/Nightman/VisibleOnScreenNotifier3D" to="Outside/Monsters/Nightman" method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="on_lever_return" from="Inside/Controls/Left_Panel/Power/Power_Lever" to="Gamestate/PowerManager" method="_on_power_lever_on_lever_return"]
+[connection signal="on_lever_triggered" from="Inside/Controls/Left_Panel/Power/Power_Lever" to="Gamestate/PowerManager" method="_on_power_lever_on_lever_triggered"]
+[connection signal="value_changed" from="Inside/Controls/Middle_Panel/DrillControls/Sector/X_Slider" to="Gamestate/DrillManager" method="_on_x_slider_value_changed"]
+[connection signal="value_changed" from="Inside/Controls/Middle_Panel/DrillControls/Sector/Y_Slider" to="Gamestate/DrillManager" method="_on_y_slider_value_changed"]
+[connection signal="value_changed" from="Inside/Controls/Middle_Panel/DrillControls/Depth/Depth_Dial" to="Gamestate/DrillManager" method="_on_depth_dial_value_changed"]
+[connection signal="button_interacted" from="Inside/Controls/Middle_Panel/DrillControls/Drill_On_Off/Button" to="Gamestate/DrillManager" method="_on_button_button_interacted"]
+[connection signal="value_changed" from="Inside/Controls/Middle_Panel/Sensors/Frequency_Dial" to="Gamestate/SensorsManager" method="_on_frequency_dial_value_changed"]
+[connection signal="value_changed" from="Inside/Controls/Middle_Panel/Sensors/Amplitude_Dial" to="Gamestate/SensorsManager" method="_on_amplitude_dial_value_changed"]
+[connection signal="button_interacted" from="Inside/Controls/Middle_Panel/Scanner/Button" to="Gamestate/SensorsManager" method="_on_button_button_interacted"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvxla8y6o6wo6"]
+
+[ext_resource type="Script" uid="uid://bcplnx44cy2qh" path="res://Interactables/Lever/scripts/lever.gd" id="1_sxjql"]
+[ext_resource type="PackedScene" uid="uid://duwrno38b8iwv" path="res://Interactables/Lever/Models/Lever_Handle.glb" id="1_wqkuu"]
+[ext_resource type="Script" uid="uid://ba3jm07kuk0k7" path="res://Systems/Interact/Interactable/scripts/interactable.gd" id="2_vquyb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wqkuu"]
+size = Vector3(0.155, 0.05, 0.05)
+
+[node name="Lever" type="Node3D"]
+script = ExtResource("1_sxjql")
+
+[node name="Lever" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.0986233)
+
+[node name="Lever Handle" parent="Lever" instance=ExtResource("1_wqkuu")]
+transform = Transform3D(-2.18557e-09, 0, -0.05, 0, 0.05, 0, 0.05, 0, -2.18557e-09, 0, -0.026, 0)
+
+[node name="Handle Interactor" type="StaticBody3D" parent="Lever"]
+script = ExtResource("2_vquyb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lever/Handle Interactor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17513, 0)
+shape = SubResource("BoxShape3D_wqkuu")
+
+[node name="Start" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="End" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+
+[connection signal="on_interacted" from="Lever/Handle Interactor" to="." method="_on_handle_interactor_on_interacted"]
+[connection signal="on_stop_interact" from="Lever/Handle Interactor" to="." method="_on_handle_interactor_on_stop_interact"]

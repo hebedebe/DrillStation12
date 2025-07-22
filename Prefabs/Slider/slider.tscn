@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://dlavq24g0tj2b"]
+
+[ext_resource type="Script" uid="uid://cj4puetg1l6o8" path="res://Prefabs/Slider/Scripts/slider.gd" id="1_t8pa6"]
+[ext_resource type="Script" uid="uid://ba3jm07kuk0k7" path="res://Systems/Interact/Interactable/Scripts/interactable.gd" id="2_s4yiv"]
+[ext_resource type="Material" uid="uid://chom0ctekue0b" path="res://Shared Resources/Materials/hazard.tres" id="3_m5n4q"]
+[ext_resource type="AudioStream" uid="uid://dat5dis6sfnuj" path="res://Prefabs/Dial/Audio/tick_2.mp3" id="3_vc775"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t8pa6"]
+size = Vector3(0.132446, 0.0678101, 0.0887756)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sb1vu"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_t8pa6"]
+size = Vector3(1, 0.645, 1)
+
+[node name="Slider" type="Node3D"]
+script = ExtResource("1_t8pa6")
+
+[node name="Interactable" type="StaticBody3D" parent="."]
+transform = Transform3D(0.41703, 0, 0, 0, 0.41703, 0, 0, 0, 0.41703, 0, 0, 0)
+script = ExtResource("2_s4yiv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0270386, 0.00308228, -0.00193787)
+shape = SubResource("BoxShape3D_t8pa6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interactable"]
+transform = Transform3D(0.0596771, 0, 0, 0, 0.044848, 0, 0, 0, 0.0596771, 0, 0, 0)
+material_override = ExtResource("3_m5n4q")
+mesh = SubResource("BoxMesh_sb1vu")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Interactable"]
+transform = Transform3D(1.14024e-16, 0.0596771, -2.60857e-09, 1.96037e-09, -1.96037e-09, -0.044848, -0.0596771, 0, -2.60857e-09, 0.0489807, 0, 0)
+material_override = ExtResource("3_m5n4q")
+mesh = SubResource("PrismMesh_t8pa6")
+skeleton = NodePath("")
+
+[node name="ClickSound" type="AudioStreamPlayer3D" parent="Interactable"]
+stream = ExtResource("3_vc775")
+bus = &"Inside"
+
+[connection signal="on_interacted" from="Interactable" to="." method="_on_interactable_on_interacted"]
+[connection signal="on_stop_interact" from="Interactable" to="." method="_on_interactable_on_stop_interact"]

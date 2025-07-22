@@ -1,0 +1,126 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Drill station 12"
+run/main_scene="uid://bne34n2s22p2g"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Shaker="*res://addons/shaker/src/Shaker.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/ui_design_tool/plugin.cfg", "res://addons/wingman/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Levels/": "red",
+"res://Levels/Game/": "orange",
+"res://Missions/": "purple",
+"res://Panels/": "red",
+"res://Panels/Window Panel/": "green",
+"res://Panels/Window Panel/Models/": "teal",
+"res://Panels/Window Panel/Textures/": "teal",
+"res://Prefabs/": "red",
+"res://Prefabs/Button/": "green",
+"res://Prefabs/Button/Animations/": "teal",
+"res://Prefabs/Button/Audio/": "teal",
+"res://Prefabs/Button/Models/": "teal",
+"res://Prefabs/Button/Scripts/": "teal",
+"res://Prefabs/Button/Textures/": "teal",
+"res://Prefabs/Dial Display/": "green",
+"res://Prefabs/Dial Display/Scripts/": "teal",
+"res://Prefabs/Dial/": "green",
+"res://Prefabs/Dial/Audio/": "teal",
+"res://Prefabs/Dial/Materials/": "teal",
+"res://Prefabs/Dial/Models/": "teal",
+"res://Prefabs/Dial/Scripts/": "teal",
+"res://Prefabs/Dial/Textures/": "teal",
+"res://Prefabs/Indicators/Square Button Indicator/": "green",
+"res://Prefabs/Indicators/Square Button Indicator/Materials/": "teal",
+"res://Prefabs/Indicators/Square Button Indicator/Scripts/": "teal",
+"res://Prefabs/Lever/": "green",
+"res://Prefabs/Lever/Audio/": "teal",
+"res://Prefabs/Lever/Models/": "teal",
+"res://Prefabs/Lever/Scripts/": "teal",
+"res://Prefabs/Lever/Textures/": "teal",
+"res://Prefabs/Progress Bar/": "green",
+"res://Prefabs/Progress Bar/Scripts/": "teal",
+"res://Prefabs/Rectangular Button/": "green",
+"res://Prefabs/Rectangular Button/Animations/": "teal",
+"res://Prefabs/Rectangular Button/Audio/": "teal",
+"res://Prefabs/Screen/": "green",
+"res://Prefabs/Screen/Scripts/": "teal",
+"res://Prefabs/Signal Display/": "green",
+"res://Prefabs/Signal Display/Scripts/": "teal",
+"res://Prefabs/Slider/": "green",
+"res://Prefabs/Square Button/": "green",
+"res://Prefabs/Square Button/Animations/": "teal",
+"res://Prefabs/Square Button/Audio/": "teal",
+"res://Shared Resources/": "red",
+"res://Shared Resources/Audio/": "teal",
+"res://Shared Resources/Fonts/": "teal",
+"res://Shared Resources/LUTs/": "teal",
+"res://Shared Resources/Materials/": "teal",
+"res://Shared Resources/Models/": "teal",
+"res://Shared Resources/Shaders/": "teal",
+"res://Shared Resources/Textures/": "teal",
+"res://Systems/": "red",
+"res://Systems/Gamestate/": "green",
+"res://Systems/Gamestate/Audio/": "teal",
+"res://Systems/Gamestate/Scripts/": "teal",
+"res://Systems/Interact/Interactable/": "green",
+"res://Systems/Interact/Interactable/Scripts/": "teal",
+"res://Systems/Interact/Interactor/": "green",
+"res://Systems/Interact/Interactor/Scripts/": "teal",
+"res://Systems/Light Flicker/": "green",
+"res://Systems/Light Flicker/Scripts/": "teal",
+"res://Systems/Missions/Mission/": "green",
+"res://Systems/Missions/Mission/Missions/": "teal",
+"res://Systems/Missions/Mission/Scripts/": "teal",
+"res://Systems/Player/": "green",
+"res://Systems/Player/Audio/": "teal",
+"res://Systems/Player/Scripts/": "teal",
+"res://Systems/Random Ambience/": "green",
+"res://Systems/Random Ambience/Audio/": "teal",
+"res://Systems/Random Ambience/Scripts/": "teal",
+"res://Systems/Scan/": "green",
+"res://Systems/Scan/Scans/": "teal",
+"res://Systems/Scan/Scripts/": "teal",
+"res://Systems/Scan/Textures/": "teal",
+"res://addons/": "gray"
+}
+
+[global_group]
+
+Gamestate=""
+Player=""
+Lights=""
+needs_power=""
+base_signal=""
+input_signal=""
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+shading/overrides/force_vertex_shading=true

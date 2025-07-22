@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cvc6dv0wcjlxe"]
+
+[ext_resource type="Texture2D" uid="uid://dxpgi43pwwwn3" path="res://Shared Resources/Textures/scratched_metal.png" id="1_ncfpo"]
+
+[resource]
+albedo_texture = ExtResource("1_ncfpo")
+uv1_scale = Vector3(3.805, 3.805, 3.805)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0

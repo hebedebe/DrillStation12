@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://6ox87pxv0qxl"]
+
+[ext_resource type="Texture2D" uid="uid://bgvda7jiseko4" path="res://Shared Resources/Textures/rusty_metal.png" id="1_l7hsr"]
+
+[resource]
+albedo_texture = ExtResource("1_l7hsr")
+uv1_scale = Vector3(0.51, 0.51, 0.51)
+texture_filter = 0

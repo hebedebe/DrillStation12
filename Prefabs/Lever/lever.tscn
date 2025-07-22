@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvxla8y6o6wo6"]
+
+[ext_resource type="Script" uid="uid://bcplnx44cy2qh" path="res://Prefabs/Lever/Scripts/lever.gd" id="1_sxjql"]
+[ext_resource type="PackedScene" uid="uid://duwrno38b8iwv" path="res://Prefabs/Lever/Models/Lever_Handle.glb" id="1_wqkuu"]
+[ext_resource type="Script" uid="uid://ba3jm07kuk0k7" path="res://Systems/Interact/Interactable/Scripts/interactable.gd" id="2_vquyb"]
+[ext_resource type="AudioStream" uid="uid://duajtpjue3ovg" path="res://Prefabs/Lever/Audio/grab.mp3" id="3_bcfvu"]
+[ext_resource type="AudioStream" uid="uid://3y5f30lst0uu" path="res://Prefabs/Lever/Audio/lever_clunk_end.mp3" id="4_8rkmj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wqkuu"]
+size = Vector3(0.155, 0.05, 0.05)
+
+[node name="Lever" type="Node3D"]
+script = ExtResource("1_sxjql")
+
+[node name="Lever_Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.988388, -0.151951, 0, 0.151951, 0.988388, 0, 0, 0)
+
+[node name="LeverHandle" parent="Lever_Pivot" instance=ExtResource("1_wqkuu")]
+transform = Transform3D(-2.18557e-09, 0, -0.05, 0, 0.05, 0, 0.05, 0, -2.18557e-09, 0, -0.026, 0)
+
+[node name="LeverGrab" type="AudioStreamPlayer3D" parent="Lever_Pivot/LeverHandle"]
+transform = Transform3D(20, 0, -5.68434e-14, 0, 20, 1.42109e-14, -5.68434e-14, 0, 20, -0.557886, 3.62885, 2.4386e-08)
+stream = ExtResource("3_bcfvu")
+bus = &"Inside"
+
+[node name="Handle Interactor" type="StaticBody3D" parent="Lever_Pivot"]
+script = ExtResource("2_vquyb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lever_Pivot/Handle Interactor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17513, 0)
+shape = SubResource("BoxShape3D_wqkuu")
+
+[node name="Node3D" type="Node3D" parent="Lever_Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.175, 0)
+
+[node name="Start" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.175, 0)
+
+[node name="End" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.175, 0)
+
+[node name="LeverClunk" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_8rkmj")
+volume_db = 10.173
+max_db = 6.0
+bus = &"Inside"
+
+[connection signal="on_interacted" from="Lever_Pivot/Handle Interactor" to="." method="_on_handle_interactor_on_interacted"]
+[connection signal="on_stop_interact" from="Lever_Pivot/Handle Interactor" to="." method="_on_handle_interactor_on_stop_interact"]

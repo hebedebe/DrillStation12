@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=3 uid="uid://u5cl2kcjyo5o"]
+
+[ext_resource type="Script" uid="uid://cph6taiog2u0" path="res://Systems/Player/Scripts/player.gd" id="1_kf17p"]
+[ext_resource type="PackedScene" uid="uid://cav6vbmwo11tg" path="res://Systems/Interact/Interactor/interactor.tscn" id="2_356f3"]
+[ext_resource type="AudioStream" uid="uid://8wvs0xd88tph" path="res://Systems/Player/Audio/woosh.mp3" id="2_pc2b8"]
+[ext_resource type="FontFile" uid="uid://bjuo2qd2s2kbv" path="res://Shared Resources/Fonts/times.ttf" id="3_356f3"]
+[ext_resource type="Shader" uid="uid://c55sa4h53gxgd" path="res://Shared Resources/Shaders/ps1_post_process.gdshader" id="5_356f3"]
+[ext_resource type="Shader" uid="uid://b2evw702fujoq" path="res://Shared Resources/Shaders/post_process.gdshader" id="6_mqks5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqks5"]
+shader = ExtResource("5_356f3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wc1dy"]
+shader = ExtResource("6_mqks5")
+shader_parameter/desaturation = 0.0
+shader_parameter/noise_strength = 0.05
+shader_parameter/vignette_strength = 0.6
+shader_parameter/vignette_radius = 1.0
+shader_parameter/contrast = 1.0
+shader_parameter/grain_luminance_factor = 20.0
+shader_parameter/grain_response_curve = 1.955
+shader_parameter/aberration_strength = 0.002
+shader_parameter/aberration_falloff = 1.5
+shader_parameter/motion_blur_direction = Vector2(0.001, 0)
+shader_parameter/motion_blur_samples = 8
+
+[node name="Player" type="Node3D" groups=["Player"]]
+script = ExtResource("1_kf17p")
+
+[node name="Interactor" parent="." instance=ExtResource("2_356f3")]
+
+[node name="Neck" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Neck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.300867)
+fov = 50.0
+size = 0.04
+
+[node name="LookSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_pc2b8")
+volume_db = 5.81
+bus = &"Inside"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Reset" type="Button" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_356f3")
+alignment = 2
+
+[node name="Look Left" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 64.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_356f3")
+text = "<<"
+alignment = 0
+
+[node name="Look Right" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_right = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_356f3")
+text = ">>"
+alignment = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_mqks5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+visible = false
+material = SubResource("ShaderMaterial_wc1dy")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="mouse_entered" from="Control/Reset" to="." method="_on_reset_mouse_entered"]
+[connection signal="mouse_entered" from="Control/Look Left" to="." method="_on_look_left_mouse_entered"]
+[connection signal="mouse_entered" from="Control/Look Right" to="." method="_on_look_right_mouse_entered"]

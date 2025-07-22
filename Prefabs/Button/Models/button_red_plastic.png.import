@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://d30a8qijhdyu3"
+path.s3tc="res://.godot/imported/button_red_plastic.png-c46e49614eb565f9131b3e3a9a55d786.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "2c4d20df66de5f8952b2d92c6087a63d"
+}
+
+[deps]
+
+source_file="res://Prefabs/Button/Models/button_red_plastic.png"
+dest_files=["res://.godot/imported/button_red_plastic.png-c46e49614eb565f9131b3e3a9a55d786.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cux6mqsba86kx"]
+
+[ext_resource type="Texture2D" uid="uid://nwwhhgkjfufu" path="res://Shared Resources/Textures/grey_concrete.png" id="1_eite0"]
+
+[resource]
+albedo_texture = ExtResource("1_eite0")
+uv1_scale = Vector3(4.08, 2.393, 2.393)
+texture_filter = 0

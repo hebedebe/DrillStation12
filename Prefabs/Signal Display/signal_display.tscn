@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://gnupm32ra23x"]
+
+[ext_resource type="Script" uid="uid://bmx58pr6x42xn" path="res://Prefabs/Signal Display/Scripts/signal_display.gd" id="1_y2i35"]
+[ext_resource type="Script" uid="uid://d0qcgip3mcd4x" path="res://Prefabs/Signal Display/Scripts/draw_sin.gd" id="2_y2i35"]
+[ext_resource type="Texture2D" uid="uid://bgvda7jiseko4" path="res://Shared Resources/Textures/rusty_metal.png" id="3_a8jj3"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fri1m"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sihhd"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_fri1m")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_fri1m"]
+size = Vector2(0.186, 0.186)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w317b"]
+albedo_texture = ExtResource("3_a8jj3")
+uv1_scale = Vector3(1.26, 1.26, 1.26)
+uv1_offset = Vector3(0, -0.195, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_y2i35"]
+size = Vector3(0.205, 0.205, 0.051)
+
+[node name="SignalDisplay" type="Node3D" groups=["needs_power"]]
+script = ExtResource("1_y2i35")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(128, 128)
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport"]
+
+[node name="Node2D" type="Node2D" parent="SubViewport"]
+
+[node name="Base" type="Sprite2D" parent="SubViewport/Node2D" groups=["base_signal", "needs_power"]]
+scale = Vector2(0.507344, 0.5)
+script = ExtResource("2_y2i35")
+draw_colour = Color(0, 1, 0, 1)
+draw_offset = Vector2(-128, -128)
+
+[node name="Input" type="Sprite2D" parent="SubViewport/Node2D" groups=["input_signal", "needs_power"]]
+scale = Vector2(0.507344, 0.5)
+script = ExtResource("2_y2i35")
+draw_colour = Color(1, 1, 0, 1)
+draw_offset = Vector2(-128, -128)
+
+[node name="Display" type="Node3D" parent="."]
+
+[node name="Screen" type="MeshInstance3D" parent="Display"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.006)
+material_override = SubResource("StandardMaterial3D_sihhd")
+mesh = SubResource("QuadMesh_fri1m")
+
+[node name="Backing" type="MeshInstance3D" parent="Display"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.032)
+material_override = SubResource("StandardMaterial3D_w317b")
+mesh = SubResource("BoxMesh_y2i35")

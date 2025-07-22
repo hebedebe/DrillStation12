@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=3 uid="uid://csggw5gv80sxo"]
+
+[ext_resource type="Script" uid="uid://00lcwocidho0" path="res://Prefabs/Button/Scripts/button.gd" id="1_chxg0"]
+[ext_resource type="Texture2D" uid="uid://dg7t6t0kygvf3" path="res://Shared Resources/Textures/hazard_stripes.png" id="2_lbs12"]
+[ext_resource type="Script" uid="uid://ba3jm07kuk0k7" path="res://Systems/Interact/Interactable/Scripts/interactable.gd" id="3_jl6tx"]
+[ext_resource type="Texture2D" uid="uid://bgvda7jiseko4" path="res://Shared Resources/Textures/rusty_metal.png" id="3_lbs12"]
+[ext_resource type="AudioStream" uid="uid://juo18ivsspkc" path="res://Prefabs/Square Button/Audio/button_2.mp3" id="5_lbs12"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w5pj8"]
+albedo_texture = ExtResource("2_lbs12")
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_krvww"]
+size = Vector3(0.08, 0.08, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhj54"]
+albedo_texture = ExtResource("3_lbs12")
+uv1_scale = Vector3(0.51, 0.51, 0.51)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_djcru"]
+size = Vector3(0.06, 0.06, 0.02)
+
+[sub_resource type="Animation" id="Animation_lbs12"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.012), Vector3(0, 0, 0), Vector3(0, 0, 0.012)]
+}
+
+[sub_resource type="Animation" id="Animation_w5pj8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.012)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w5pj8"]
+_data = {
+&"ButtonAction": SubResource("Animation_lbs12"),
+&"RESET": SubResource("Animation_w5pj8")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ib7gy"]
+size = Vector3(0.065, 0.065, 0.0216055)
+
+[node name="Button" type="Node3D"]
+script = ExtResource("1_chxg0")
+
+[node name="button" type="Node3D" parent="."]
+transform = Transform3D(0.35876, 0, 0, 0, 0.35876, 0, 0, 0, 0.35876, 0, 0, 0)
+
+[node name="Backing" type="MeshInstance3D" parent="button"]
+material_override = SubResource("StandardMaterial3D_w5pj8")
+mesh = SubResource("BoxMesh_krvww")
+
+[node name="Button" type="MeshInstance3D" parent="button"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.012)
+material_override = SubResource("StandardMaterial3D_jhj54")
+mesh = SubResource("BoxMesh_djcru")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="button"]
+libraries = {
+&"": SubResource("AnimationLibrary_w5pj8")
+}
+speed_scale = 2.0
+
+[node name="Button Interactor" type="StaticBody3D" parent="."]
+transform = Transform3D(0.35876, 0, 0, 0, 0.35876, 0, 0, 0, 0.35876, 0, 0, 0)
+script = ExtResource("3_jl6tx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Button Interactor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0166386)
+shape = SubResource("BoxShape3D_ib7gy")
+
+[node name="ButtonPressSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_lbs12")
+pitch_scale = 0.84
+bus = &"Inside"
+
+[connection signal="on_interacted" from="Button Interactor" to="." method="_on_button_interactor_on_interacted"]

@@ -1,0 +1,108 @@
+[gd_scene load_steps=15 format=3 uid="uid://cuejur8x82dpn"]
+
+[ext_resource type="Script" uid="uid://00lcwocidho0" path="res://Prefabs/Button/Scripts/button.gd" id="1_s850j"]
+[ext_resource type="Texture2D" uid="uid://dg7t6t0kygvf3" path="res://Shared Resources/Textures/hazard_stripes.png" id="2_jcior"]
+[ext_resource type="Texture2D" uid="uid://bgvda7jiseko4" path="res://Shared Resources/Textures/rusty_metal.png" id="3_784oj"]
+[ext_resource type="Script" uid="uid://ba3jm07kuk0k7" path="res://Systems/Interact/Interactable/Scripts/interactable.gd" id="4_j03ll"]
+[ext_resource type="FontFile" uid="uid://bjuo2qd2s2kbv" path="res://Shared Resources/Fonts/times.ttf" id="4_jcior"]
+[ext_resource type="AudioStream" uid="uid://juo18ivsspkc" path="res://Prefabs/Square Button/Audio/button_2.mp3" id="5_emp7w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xnwq"]
+albedo_texture = ExtResource("2_jcior")
+uv1_scale = Vector3(9.405, 1, 1)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_krvww"]
+size = Vector3(0.555, 0.08, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s850j"]
+albedo_texture = ExtResource("3_784oj")
+uv1_scale = Vector3(3.83, 0.25, 1)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_djcru"]
+size = Vector3(0.54, 0.06, 0.02)
+
+[sub_resource type="Animation" id="Animation_lbs12"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.012), Vector3(0, 0, 0), Vector3(0, 0, 0.012)]
+}
+
+[sub_resource type="Animation" id="Animation_w5pj8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.012)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w5pj8"]
+_data = {
+&"ButtonAction": SubResource("Animation_lbs12"),
+&"RESET": SubResource("Animation_w5pj8")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ib7gy"]
+size = Vector3(0.544814, 0.065, 0.0216055)
+
+[node name="Button" type="Node3D"]
+script = ExtResource("1_s850j")
+
+[node name="button" type="Node3D" parent="."]
+transform = Transform3D(0.35876, 0, 0, 0, 0.35876, 0, 0, 0, 0.35876, 0, 0, 0)
+
+[node name="Backing" type="MeshInstance3D" parent="button"]
+material_override = SubResource("StandardMaterial3D_3xnwq")
+mesh = SubResource("BoxMesh_krvww")
+
+[node name="Button" type="MeshInstance3D" parent="button"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.012)
+material_override = SubResource("StandardMaterial3D_s850j")
+mesh = SubResource("BoxMesh_djcru")
+
+[node name="DRILL" type="Label3D" parent="button/Button"]
+transform = Transform3D(0.246623, 5.78438e-08, 6.49791e-09, -3.23408e-08, 0.441105, -4.03161e-14, -3.91967e-09, -6.12805e-14, 0.408848, 0.000182402, -0.000244393, 0.0125062)
+shaded = true
+texture_filter = 0
+modulate = Color(1, 1, 0, 1)
+text = "TAKE SOIL SAMPLE"
+font = ExtResource("4_jcior")
+outline_size = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="button"]
+libraries = {
+&"": SubResource("AnimationLibrary_w5pj8")
+}
+speed_scale = 2.0
+
+[node name="Button Interactor" type="StaticBody3D" parent="."]
+transform = Transform3D(0.35876, 0, 0, 0, 0.35876, 0, 0, 0, 0.35876, 0, 0, 0)
+script = ExtResource("4_j03ll")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Button Interactor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000434572, 0, 0.0166386)
+shape = SubResource("BoxShape3D_ib7gy")
+
+[node name="ButtonPressSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_emp7w")
+pitch_scale = 0.84
+bus = &"Inside"
+
+[connection signal="on_interacted" from="Button Interactor" to="." method="_on_button_interactor_on_interacted"]

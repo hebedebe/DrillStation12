@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6m241htjqbtq"]
+
+[ext_resource type="Script" uid="uid://bf8vh2rq653xf" path="res://Systems/Random Ambience/Scripts/random_ambience.gd" id="1_i2rmu"]
+
+[node name="Random Ambience" type="AudioStreamPlayer"]
+volume_db = -20.439
+script = ExtResource("1_i2rmu")

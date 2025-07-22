@@ -1,0 +1,26 @@
+[remap]
+
+importer="3d_texture"
+type="CompressedTexture3D"
+uid="uid://fswfo60c1n06"
+path="res://.godot/imported/teal___orange_2.Sony_F3_-_Short_film_Insect_selects.cube-s32.png-812d1e08f44525b45c84479464d83869.ctex3d"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Shared Resources/LUTs/teal___orange_2.Sony_F3_-_Short_film_Insect_selects.cube-s32.png"
+dest_files=["res://.godot/imported/teal___orange_2.Sony_F3_-_Short_film_Insect_selects.cube-s32.png-812d1e08f44525b45c84479464d83869.ctex3d"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=32
+slices/vertical=1
