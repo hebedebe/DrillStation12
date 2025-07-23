@@ -260,6 +260,7 @@ transform = Transform3D(1.91069e-15, -4.37113e-08, -1, -1, -4.37113e-08, -4.5652
 [node name="OmniLight3D" type="OmniLight3D" parent="Outside"]
 transform = Transform3D(-3.09086e-08, -1, 7.46199e-08, 0.707107, -7.46199e-08, -0.707107, 0.707107, 3.09085e-08, 0.707107, -6.33299e-08, 1.88019, 0.302285)
 light_color = Color(1, 0, 0, 1)
+light_bake_mode = 1
 omni_range = 1.513
 omni_attenuation = 0.0
 
@@ -268,6 +269,7 @@ transform = Transform3D(-3.09086e-08, -1, 7.46199e-08, 0.707107, -7.46199e-08, -
 light_color = Color(1, 0, 0, 1)
 light_energy = 2.0
 light_volumetric_fog_energy = 1.192
+light_bake_mode = 1
 omni_range = 10.772
 omni_attenuation = 2.0
 
