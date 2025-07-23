@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("2_ywfm2")
 title = "Snake Skeleton"
-description = "The remains of a snake of unknown age. It is made of a material similar, but not the same as ordinary bone."
+description = "The remains of a snake of unknown age. It is made of a material similar to, but not the same as ordinary bone."
 image = ExtResource("1_qftp7")
 metadata/_custom_type_script = "uid://dksxhfv51fodn"

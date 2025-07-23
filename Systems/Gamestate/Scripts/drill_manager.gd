@@ -1,7 +1,7 @@
 extends Node
 class_name DrillManager
 
-const DRILL_TIME_PER_KM := 3.0 # in seconds
+const DRILL_TIME_PER_KM := 0.1#3.0 # in seconds
 
 var drilling: bool = false
 var drill_sector: Vector2i

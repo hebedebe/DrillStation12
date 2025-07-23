@@ -20,9 +20,21 @@ func _process(_delta):
 	title.visible = enabled and current_scan
 	description.visible = enabled and current_scan
 
+func show_loading():
+	$LOADING.visible = true
+	$ScanSound.play()
+	$ScanSound2.play()
+	
+func hide_loading():
+	$LOADING.visible = false
+	$ScanSound.stop()
+	$ScanSound2.stop()
+
 
 #Signal functions
 func turn_on():
 	enabled = true
 func turn_off():
 	enabled = false
+	$ScanSound.stop()
+	$ScanSound2.stop()

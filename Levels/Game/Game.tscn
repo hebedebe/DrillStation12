@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://bne34n2s22p2g"]
+[gd_scene load_steps=72 format=3 uid="uid://bne34n2s22p2g"]
 
 [ext_resource type="PackedScene" uid="uid://bgdauqlwxaan0" path="res://Systems/Gamestate/gamestate.tscn" id="1_1t40k"]
 [ext_resource type="PackedScene" uid="uid://c6m241htjqbtq" path="res://Systems/Random Ambience/random_ambience.tscn" id="1_2eydq"]
@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://y6bie7xhw12w" path="res://Prefabs/Button/button.tscn" id="20_sm4lt"]
 [ext_resource type="PackedScene" uid="uid://b86ov60y182p7" path="res://Prefabs/Dial Display/DialDisplay.tscn" id="20_xmwdf"]
 [ext_resource type="PackedScene" uid="uid://cwn33igqtokph" path="res://Prefabs/Dial/Dial.tscn" id="21_4i2jg"]
+[ext_resource type="Texture2D" uid="uid://cf0ba6dtm5o5v" path="res://Monsters/Mothman/mothman.png" id="21_pysbq"]
 [ext_resource type="Material" uid="uid://chom0ctekue0b" path="res://Shared Resources/Materials/hazard.tres" id="21_w317b"]
 [ext_resource type="PackedScene" uid="uid://csggw5gv80sxo" path="res://Prefabs/Square Button/square_button.tscn" id="22_jyn32"]
 [ext_resource type="PackedScene" uid="uid://dlavq24g0tj2b" path="res://Prefabs/Slider/slider.tscn" id="25_jyn32"]
@@ -44,6 +45,8 @@
 [ext_resource type="Script" uid="uid://5yfsohr8mr7l" path="res://Prefabs/Screen/Scripts/screen.gd" id="27_ify8f"]
 [ext_resource type="Texture2D" uid="uid://clbykcp1527b1" path="res://Missions/textures/fish_skeleton.png" id="27_sgksr"]
 [ext_resource type="ArrayMesh" uid="uid://dj8hlvqpp5eas" path="res://Shared Resources/Models/cave.obj" id="29_m72fy"]
+[ext_resource type="AudioStream" uid="uid://dgsnbyqjqenjn" path="res://Prefabs/Screen/Audio/scan_1.mp3" id="42_jc562"]
+[ext_resource type="AudioStream" uid="uid://63saue08wyc5" path="res://Prefabs/Screen/Audio/scan_2.mp3" id="43_3xmon"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dygi0"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -254,6 +257,20 @@ bus = &"Outside"
 [node name="Outside" type="Node3D" parent="."]
 transform = Transform3D(1.91069e-15, -4.37113e-08, -1, -1, -4.37113e-08, -4.56524e-21, -4.37113e-08, 1, -4.37113e-08, -0.662891, 0.028496, -2.27599)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Outside"]
+transform = Transform3D(-3.09086e-08, -1, 7.46199e-08, 0.707107, -7.46199e-08, -0.707107, 0.707107, 3.09085e-08, 0.707107, -6.33299e-08, 1.88019, 0.302285)
+light_color = Color(1, 0, 0, 1)
+omni_range = 1.513
+omni_attenuation = 0.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Outside"]
+transform = Transform3D(-3.09086e-08, -1, 7.46199e-08, 0.707107, -7.46199e-08, -0.707107, 0.707107, 3.09085e-08, 0.707107, 3.24681, -3.27355, 6.84982)
+light_color = Color(1, 0, 0, 1)
+light_energy = 2.0
+light_volumetric_fog_energy = 1.192
+omni_range = 10.772
+omni_attenuation = 2.0
+
 [node name="Monsters" type="Node3D" parent="Outside"]
 
 [node name="Nightman" type="Node3D" parent="Outside/Monsters"]
@@ -263,6 +280,7 @@ script = ExtResource("17_bxlrs")
 
 [node name="Sprite" type="Sprite3D" parent="Outside/Monsters/Nightman/AtWindow"]
 transform = Transform3D(-3.09086e-08, -1, 7.46199e-08, 0.707107, -7.46199e-08, -0.707107, 0.707107, 3.09085e-08, 0.707107, -6.14673e-08, 1.8705, 0.327365)
+visible = false
 modulate = Color(0.796243, 0.796243, 0.796243, 1)
 pixel_size = 0.0005
 billboard = 1
@@ -290,6 +308,26 @@ stream = ExtResource("20_js28k")
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Outside/Monsters/Nightman"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0447563, 1.77788, 0.217449)
 aabb = AABB(0, 0, 0, 0.2, 0.2, 0.2)
+
+[node name="SoundMan" type="Node3D" parent="Outside/Monsters"]
+
+[node name="Sprite" type="Sprite3D" parent="Outside/Monsters/SoundMan"]
+transform = Transform3D(-3.09086e-08, -1, 7.46199e-08, 0.707107, -7.46199e-08, -0.707107, 0.707107, 3.09085e-08, 0.707107, -6.14673e-08, 1.8705, 0.327365)
+visible = false
+modulate = Color(128.498, 0, 0, 1)
+pixel_size = 0.0004
+billboard = 1
+shaded = true
+render_priority = 1
+texture = ExtResource("21_pysbq")
+
+[node name="Spritebody" type="Sprite3D" parent="Outside/Monsters/SoundMan/Sprite"]
+transform = Transform3D(1, 1.06581e-14, 0, -1.59872e-14, 1, 1.77636e-15, 0, 0, 1, -0.031489, -0.21174, 0.00376147)
+modulate = Color(0.796243, 0.796243, 0.796243, 1)
+pixel_size = 0.4
+billboard = 1
+texture_filter = 0
+texture = SubResource("GradientTexture1D_jc562")
 
 [node name="Cave" type="MeshInstance3D" parent="Outside"]
 transform = Transform3D(2.67143e-08, -0.893616, -2.84977e-08, -0.611154, -3.90611e-08, 0.651952, -0.651952, 2.66451e-15, -0.611154, 0.503172, 0.987129, 0.510238)
@@ -356,7 +394,7 @@ light_specular = 2.32
 shadow_bias = 0.15
 omni_range = 2.16733
 script = ExtResource("2_1t40k")
-default_brightness = 0.2
+default_brightness = 0.1
 flicker_freq_sin = 0.08
 flicker_freq_cos = 0.01
 flicker_amp_sin = 0.002
@@ -639,6 +677,29 @@ outline_size = 0
 horizontal_alignment = 0
 vertical_alignment = 0
 text_direction = 1
+
+[node name="LOADING" type="Label3D" parent="Inside/Controls/Middle_Panel/Scanner/Screen"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0230107, 0.0191253, -0.119119)
+visible = false
+pixel_size = 0.0001
+double_sided = false
+texture_filter = 0
+modulate = Color(0.0862745, 1, 0.0784314, 1)
+text = "SCANNING..."
+font = ExtResource("5_4hre3")
+font_size = 562
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 0
+text_direction = 1
+
+[node name="ScanSound" type="AudioStreamPlayer3D" parent="Inside/Controls/Middle_Panel/Scanner/Screen"]
+stream = ExtResource("42_jc562")
+bus = &"Inside"
+
+[node name="ScanSound2" type="AudioStreamPlayer3D" parent="Inside/Controls/Middle_Panel/Scanner/Screen"]
+stream = ExtResource("43_3xmon")
+bus = &"Inside"
 
 [node name="Panels" type="Node3D" parent="Inside"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7)

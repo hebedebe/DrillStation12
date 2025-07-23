@@ -70,6 +70,7 @@ folder_colors={
 "res://Prefabs/Rectangular Button/Animations/": "teal",
 "res://Prefabs/Rectangular Button/Audio/": "teal",
 "res://Prefabs/Screen/": "green",
+"res://Prefabs/Screen/Audio/": "teal",
 "res://Prefabs/Screen/Scripts/": "teal",
 "res://Prefabs/Signal Display/": "green",
 "res://Prefabs/Signal Display/Scripts/": "teal",
