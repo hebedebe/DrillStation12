@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://bne34n2s22p2g"]
+[gd_scene load_steps=85 format=3 uid="uid://bne34n2s22p2g"]
 
 [ext_resource type="PackedScene" uid="uid://bgdauqlwxaan0" path="res://Systems/Gamestate/gamestate.tscn" id="1_1t40k"]
 [ext_resource type="PackedScene" uid="uid://c6m241htjqbtq" path="res://Systems/Random Ambience/random_ambience.tscn" id="1_2eydq"]
@@ -28,7 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://dveg8oi6u0itu" path="res://Voicelines/EndDay/end_day.mp3" id="16_i6byu"]
 [ext_resource type="Material" uid="uid://dj0i1wie670su" path="res://Shared Resources/Materials/rusty_metal_brown.tres" id="16_kyu6f"]
 [ext_resource type="Texture2D" uid="uid://buyqxcdifyu4x" path="res://Monsters/Nightman/nightman.png" id="17_5qr25"]
-[ext_resource type="Script" uid="uid://djvgyvvuvwdlp" path="res://Monsters/Nightman/nightman.gd" id="17_bxlrs"]
+[ext_resource type="Script" uid="uid://djvgyvvuvwdlp" path="res://Monsters/Nightman/Scripts/nightman.gd" id="17_bxlrs"]
 [ext_resource type="AudioStream" uid="uid://i4cy7bjsawy3" path="res://Monsters/Nightman/breathing.mp3" id="18_vlj6p"]
 [ext_resource type="PackedScene" uid="uid://ctklbdx6y1gu7" path="res://Prefabs/Indicators/Square Button Indicator/indicator.tscn" id="19_6klxa"]
 [ext_resource type="PackedScene" uid="uid://gnupm32ra23x" path="res://Prefabs/Signal Display/signal_display.tscn" id="19_iw37t"]
@@ -36,15 +36,28 @@
 [ext_resource type="PackedScene" uid="uid://y6bie7xhw12w" path="res://Prefabs/Button/button.tscn" id="20_sm4lt"]
 [ext_resource type="PackedScene" uid="uid://b86ov60y182p7" path="res://Prefabs/Dial Display/DialDisplay.tscn" id="20_xmwdf"]
 [ext_resource type="PackedScene" uid="uid://cwn33igqtokph" path="res://Prefabs/Dial/Dial.tscn" id="21_4i2jg"]
+[ext_resource type="Script" uid="uid://bgcy4nlt0em0f" path="res://States/StateManager.gd" id="21_8ur0f"]
 [ext_resource type="Texture2D" uid="uid://cf0ba6dtm5o5v" path="res://Monsters/Mothman/mothman.png" id="21_pysbq"]
 [ext_resource type="Material" uid="uid://chom0ctekue0b" path="res://Shared Resources/Materials/hazard.tres" id="21_w317b"]
+[ext_resource type="Script" uid="uid://duw3ynik0shaj" path="res://Monsters/Nightman/Scripts/States/jumpscare_state.gd" id="22_8yata"]
+[ext_resource type="Script" uid="uid://cn3c7f1y4wmd5" path="res://Monsters/Nightman/Scripts/States/not_present_state.gd" id="22_34qsv"]
 [ext_resource type="PackedScene" uid="uid://csggw5gv80sxo" path="res://Prefabs/Square Button/square_button.tscn" id="22_jyn32"]
+[ext_resource type="Script" uid="uid://yajpgybephss" path="res://Monsters/Nightman/Scripts/States/ready_to_appear_state.gd" id="23_rhm5j"]
+[ext_resource type="Script" uid="uid://bjvij2kv36qv3" path="res://Monsters/Nightman/Scripts/States/present_at_window_state.gd" id="24_uqnlv"]
+[ext_resource type="Script" uid="uid://u5petmexwh0p" path="res://Monsters/Nightman/Scripts/States/permanently_present_state.gd" id="25_i4kwa"]
 [ext_resource type="PackedScene" uid="uid://dlavq24g0tj2b" path="res://Prefabs/Slider/slider.tscn" id="25_jyn32"]
 [ext_resource type="Material" uid="uid://bqqd8eubwvkq2" path="res://Shared Resources/Materials/metal_plate.tres" id="26_lj5pt"]
 [ext_resource type="Material" uid="uid://cpcjpkgksgu2w" path="res://Shared Resources/Materials/metal_plate_2.tres" id="26_lkl8j"]
 [ext_resource type="Script" uid="uid://5yfsohr8mr7l" path="res://Prefabs/Screen/Scripts/screen.gd" id="27_ify8f"]
+[ext_resource type="Script" uid="uid://xletq1gvbr0a" path="res://Monsters/Mothman/Scripts/sound_man.gd" id="27_rhm5j"]
 [ext_resource type="Texture2D" uid="uid://clbykcp1527b1" path="res://Missions/textures/fish_skeleton.png" id="27_sgksr"]
+[ext_resource type="Script" uid="uid://i873hmolj2hc" path="res://Monsters/Mothman/Scripts/States/waiting_state.gd" id="28_5kstf"]
 [ext_resource type="ArrayMesh" uid="uid://dj8hlvqpp5eas" path="res://Shared Resources/Models/cave.obj" id="29_m72fy"]
+[ext_resource type="Script" uid="uid://c1pnjtg55dema" path="res://Monsters/Mothman/Scripts/States/moving_state.gd" id="29_nlf4j"]
+[ext_resource type="Script" uid="uid://b7kp1e13yaipp" path="res://Monsters/Mothman/Scripts/States/enter_view_state.gd" id="30_kyi53"]
+[ext_resource type="Script" uid="uid://dquakkqklmqr8" path="res://Monsters/Mothman/Scripts/States/lingering_state.gd" id="30_uuik4"]
+[ext_resource type="Script" uid="uid://btqaothrh8ge0" path="res://Monsters/Mothman/Scripts/States/jumpscare_state.gd" id="31_kyi53"]
+[ext_resource type="Script" uid="uid://cfn61ajuqgdrh" path="res://Monsters/Mothman/Scripts/States/exit_view_state.gd" id="32_g6r7p"]
 [ext_resource type="AudioStream" uid="uid://dgsnbyqjqenjn" path="res://Prefabs/Screen/Audio/scan_1.mp3" id="42_jc562"]
 [ext_resource type="AudioStream" uid="uid://63saue08wyc5" path="res://Prefabs/Screen/Audio/scan_2.mp3" id="43_3xmon"]
 
@@ -257,22 +270,6 @@ bus = &"Outside"
 [node name="Outside" type="Node3D" parent="."]
 transform = Transform3D(1.91069e-15, -4.37113e-08, -1, -1, -4.37113e-08, -4.56524e-21, -4.37113e-08, 1, -4.37113e-08, -0.662891, 0.028496, -2.27599)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Outside"]
-transform = Transform3D(-3.09086e-08, -1, 7.46199e-08, 0.707107, -7.46199e-08, -0.707107, 0.707107, 3.09085e-08, 0.707107, -6.33299e-08, 1.88019, 0.302285)
-light_color = Color(1, 0, 0, 1)
-light_bake_mode = 1
-omni_range = 1.513
-omni_attenuation = 0.0
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="Outside"]
-transform = Transform3D(-3.09086e-08, -1, 7.46199e-08, 0.707107, -7.46199e-08, -0.707107, 0.707107, 3.09085e-08, 0.707107, 3.24681, -3.27355, 6.84982)
-light_color = Color(1, 0, 0, 1)
-light_energy = 2.0
-light_volumetric_fog_energy = 1.192
-light_bake_mode = 1
-omni_range = 10.772
-omni_attenuation = 2.0
-
 [node name="Monsters" type="Node3D" parent="Outside"]
 
 [node name="Nightman" type="Node3D" parent="Outside/Monsters"]
@@ -311,15 +308,68 @@ stream = ExtResource("20_js28k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0447563, 1.77788, 0.217449)
 aabb = AABB(0, 0, 0, 0.2, 0.2, 0.2)
 
+[node name="StateManager" type="Node" parent="Outside/Monsters/Nightman"]
+script = ExtResource("21_8ur0f")
+self_process = false
+metadata/_custom_type_script = "uid://bgcy4nlt0em0f"
+
+[node name="NotPresent" type="Node" parent="Outside/Monsters/Nightman/StateManager"]
+script = ExtResource("22_34qsv")
+metadata/_custom_type_script = "uid://bsflcwf8kf3yj"
+
+[node name="ReadyToAppear" type="Node" parent="Outside/Monsters/Nightman/StateManager" groups=["needs_power"]]
+script = ExtResource("23_rhm5j")
+metadata/_custom_type_script = "uid://bsflcwf8kf3yj"
+
+[node name="PresentAtWindow" type="Node" parent="Outside/Monsters/Nightman/StateManager"]
+script = ExtResource("24_uqnlv")
+metadata/_custom_type_script = "uid://bsflcwf8kf3yj"
+
+[node name="PermanentlyPresent" type="Node" parent="Outside/Monsters/Nightman/StateManager"]
+script = ExtResource("25_i4kwa")
+metadata/_custom_type_script = "uid://bsflcwf8kf3yj"
+
+[node name="Jumpscare" type="Node" parent="Outside/Monsters/Nightman/StateManager"]
+script = ExtResource("22_8yata")
+metadata/_custom_type_script = "uid://bsflcwf8kf3yj"
+
 [node name="SoundMan" type="Node3D" parent="Outside/Monsters"]
+script = ExtResource("27_rhm5j")
+
+[node name="StateManager" type="Node" parent="Outside/Monsters/SoundMan"]
+script = ExtResource("21_8ur0f")
+self_process = false
+metadata/_custom_type_script = "uid://bgcy4nlt0em0f"
+
+[node name="Waiting" type="Node" parent="Outside/Monsters/SoundMan/StateManager"]
+script = ExtResource("28_5kstf")
+metadata/_custom_type_script = "uid://i873hmolj2hc"
+
+[node name="Moving" type="Node" parent="Outside/Monsters/SoundMan/StateManager"]
+script = ExtResource("29_nlf4j")
+metadata/_custom_type_script = "uid://c1pnjtg55dema"
+
+[node name="EnterView" type="Node" parent="Outside/Monsters/SoundMan/StateManager"]
+script = ExtResource("30_kyi53")
+metadata/_custom_type_script = "uid://b7kp1e13yaipp"
+
+[node name="Lingering" type="Node" parent="Outside/Monsters/SoundMan/StateManager"]
+script = ExtResource("30_uuik4")
+metadata/_custom_type_script = "uid://dquakkqklmqr8"
+
+[node name="ExitView" type="Node" parent="Outside/Monsters/SoundMan/StateManager"]
+script = ExtResource("32_g6r7p")
+metadata/_custom_type_script = "uid://cfn61ajuqgdrh"
+
+[node name="Jumpscare" type="Node" parent="Outside/Monsters/SoundMan/StateManager"]
+script = ExtResource("31_kyi53")
+metadata/_custom_type_script = "uid://btqaothrh8ge0"
 
 [node name="Sprite" type="Sprite3D" parent="Outside/Monsters/SoundMan"]
-transform = Transform3D(-3.09086e-08, -1, 7.46199e-08, 0.707107, -7.46199e-08, -0.707107, 0.707107, 3.09085e-08, 0.707107, -6.14673e-08, 1.8705, 0.327365)
-visible = false
+transform = Transform3D(-3.09086e-08, -1, 7.46199e-08, 0.707107, -7.46199e-08, -0.707107, 0.707107, 3.09085e-08, 0.707107, -5.96046e-08, 1.8705, 0.327365)
 modulate = Color(128.498, 0, 0, 1)
 pixel_size = 0.0004
 billboard = 1
-shaded = true
 render_priority = 1
 texture = ExtResource("21_pysbq")
 
@@ -331,13 +381,26 @@ billboard = 1
 texture_filter = 0
 texture = SubResource("GradientTexture1D_jc562")
 
+[node name="Checkpoints" type="Node3D" parent="Outside/Monsters/SoundMan"]
+
+[node name="StartCheckpoint" type="Node3D" parent="Outside/Monsters/SoundMan/Checkpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96046e-08, 1.38252, -0.198876)
+
+[node name="MiddleCheckpoint" type="Node3D" parent="Outside/Monsters/SoundMan/Checkpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.82311e-08, 1.86539, 0.275389)
+
+[node name="EndCheckpoint" type="Node3D" parent="Outside/Monsters/SoundMan/Checkpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17347e-07, 2.68657, 0.975533)
+
+[node name="FootstepsAudio" type="AudioStreamPlayer3D" parent="Outside/Monsters/SoundMan"]
+
 [node name="Cave" type="MeshInstance3D" parent="Outside"]
 transform = Transform3D(2.67143e-08, -0.893616, -2.84977e-08, -0.611154, -3.90611e-08, 0.651952, -0.651952, 2.66451e-15, -0.611154, 0.503172, 0.987129, 0.510238)
 material_override = SubResource("ShaderMaterial_kyu6f")
 mesh = ExtResource("29_m72fy")
 skeleton = NodePath("../../Inside/Controls/Middle_Panel/Scanner")
 
-[node name="Cave Light" type="SpotLight3D" parent="Outside/Cave" groups=["needs_power"]]
+[node name="Cave Spotlight" type="SpotLight3D" parent="Outside/Cave" groups=["needs_power"]]
 transform = Transform3D(0.974348, -0.0919439, 0.205405, 0.0363935, 0.965094, 0.259363, -0.222082, -0.245234, 0.943684, -0.340863, 0.703863, 0.841856)
 light_color = Color(0.999999, 0.665186, 0.517252, 1)
 light_energy = 3.204
@@ -346,6 +409,22 @@ spot_range = 4096.0
 spot_attenuation = 2.0
 script = ExtResource("2_1t40k")
 default_brightness = 3.204
+
+[node name="Cave Ambient 1" type="OmniLight3D" parent="Outside/Cave"]
+transform = Transform3D(-1.32918e-07, -1, 3.00023e-08, 0.707107, -1.15202e-07, -0.707107, 0.707107, -7.27727e-08, 0.707107, -0.622617, 0.550304, 0.710292)
+light_color = Color(1, 0, 0, 1)
+light_bake_mode = 1
+omni_range = 1.513
+omni_attenuation = 0.0
+
+[node name="Cave Ambient 2" type="OmniLight3D" parent="Outside/Cave"]
+transform = Transform3D(-2.45087e-07, -1, 3.70427e-08, 0.707107, -1.99496e-07, -0.707107, 0.707107, -1.4711e-07, 0.707107, -1.84529, -3.41374, -8.28383)
+light_color = Color(1, 0, 0, 1)
+light_energy = 2.0
+light_volumetric_fog_energy = 1.192
+light_bake_mode = 1
+omni_range = 10.772
+omni_attenuation = 2.0
 
 [node name="Drill" type="Node3D" parent="Outside"]
 
@@ -414,6 +493,7 @@ transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -1.2071, 0, 0.507104)
 
 [node name="Power_Lever" parent="Inside/Controls/Left_Panel/Power" instance=ExtResource("4_85ksa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.373843, -0.0441637, -0.000971556)
+start_active = true
 can_lock = true
 
 [node name="POWER" type="Label3D" parent="Inside/Controls/Left_Panel/Power"]
@@ -708,16 +788,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7)
 
 [node name="Left Panel" type="Node3D" parent="Inside/Panels"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.5, 0, 0)
-
-[node name="Emergency Light" type="SpotLight3D" parent="Inside/Panels/Left Panel"]
-transform = Transform3D(0.707107, -0.630719, 0.319677, 0, 0.452092, 0.891971, -0.707107, -0.630719, 0.319677, -0.914488, 0.423444, 0.327577)
-light_color = Color(1, 0, 0, 1)
-light_energy = 0.1
-spot_angle = 38.4912
-script = ExtResource("2_1t40k")
-default_brightness = 0.1
-flicker_amp_sin = 0.005
-flicker_amp_cos = 0.01
 
 [node name="Middle Panel" type="MeshInstance3D" parent="Inside/Panels/Left Panel"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.557151, -5.96046e-08)

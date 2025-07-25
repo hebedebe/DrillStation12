@@ -86,6 +86,7 @@ folder_colors={
 "res://Shared Resources/Models/": "teal",
 "res://Shared Resources/Shaders/": "teal",
 "res://Shared Resources/Textures/": "teal",
+"res://States/": "green",
 "res://Systems/": "red",
 "res://Systems/Gamestate/": "green",
 "res://Systems/Gamestate/Audio/": "teal",
