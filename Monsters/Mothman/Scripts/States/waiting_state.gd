@@ -10,5 +10,6 @@ func OnEnter():
 
 func Update(_delta: float):
 	# Check if enough sound has been accumulated
-	if enemy.sound_level >= enemy.SOUND_MOVE_THRESHOLD:
+	if enemy.sound_level >= enemy.SOUND_MOVE_THRESHOLD and enemy.move_timer <= 0:
+		enemy.reset()
 		state_manager.SetState("Moving")

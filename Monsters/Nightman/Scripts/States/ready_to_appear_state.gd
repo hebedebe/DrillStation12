@@ -12,8 +12,9 @@ func OnEnter():
 
 func Update(delta: float):
 	var entity = state_manager.get_parent()
+	var player = get_tree().get_first_node_in_group("Player")
 	
-	if entity.is_power_off() and is_next_outage:
+	if entity.is_power_off() and is_next_outage or player.look_index != -1:
 		# Lights went out - now we appear!
 		state_manager.SetState("PresentAtWindow")
 	else:

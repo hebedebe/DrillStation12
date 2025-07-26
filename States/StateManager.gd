@@ -28,6 +28,7 @@ func GetStateByName(state_name: String):
 	return possible_states[state_name]
 
 func SetStateNode(new_state: State):
+	print(get_parent().name, ": Set state to ", new_state.GetName())
 	if state:
 		state.OnExit()
 	state = new_state

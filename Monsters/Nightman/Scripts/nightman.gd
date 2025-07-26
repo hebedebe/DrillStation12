@@ -1,6 +1,6 @@
 extends Node3D
 
-const APPROACH_TIME = 5.0  # Total dark time needed to trigger appearance
+const APPROACH_TIME = 45.0  # Total dark time needed to trigger appearance
 const JUMPSCARE_TIME = 7.0  # Max time player can be in dark when entity is present
 const COOLDOWN_TIME = 10.0  # Max time between dark periods to stay present
 const MAX_SHAKE_INTENSITY = 0.01
